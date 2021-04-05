@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>login</title>
+    <title>Login</title>
 
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -14,13 +14,13 @@
     <div class="d-flex justify-content-center ">
             <div class="card" >
                 <div class="card-body">
-                       
+                        <div class="text-center" id="image"></div>
                         <div class="text-center">
                             <h2>Iniciar sesión</h2>
                         </div>
                         <div class="form-group">
                             <label for="usuario">Usuario o correo</label>
-                            <input type="text" class="form-control" id="nombre" aria-describedby="usuario" placeholder="Ingresa tu usuario o correo"> 
+                            <input type="text" class="form-control" id="usuario" aria-describedby="usuario" placeholder="Ingresa tu usuario o correo"> 
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña </label>
@@ -29,9 +29,29 @@
                         <div class="text-center">
                             <a href="#" class="myButton ">Iniciar Sesión</a>
                         </div>
+                        <br>
+                        <div>
+                            <p>¿No tienes cuenta?<a href="#"> Regístrate</a> </p>
+                        </div>
                 </div>
             </div>
+    
     </div>
+
+    <script type="text/babel">
+        function Img(props) {
+            return (
+                    <img className="card-img-top" src={props.img_src} alt="GameFlake"/>
+            );
+        }
+
+    ReactDOM.render(
+            <Img 
+                img_src="img/gameflake.jpg"
+            />,
+            document.getElementById('image')
+        );
+    </script>
 
     <!-- Boostrap JS: jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
