@@ -8,7 +8,7 @@ use App\Http\Controllers\AuthController;
 
 /**
  * -------------------------
- *      AUTHENTICATION
+ *      AUTENTICACION
  * -------------------------
  */
 
