@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Importar modelos
+use App\Models\Authentication;
+
 class AuthController extends Controller
 {
     /**
@@ -31,7 +34,7 @@ class AuthController extends Controller
 
         if ($token == null) {
             return redirect('/login')
-                ->with('error', 'Email incorrecto y/o contraseña incorrecta.');
+                ->with('error', 'Credenciales incorrectas. Vuelva a intentarlo porfavor.');
         }
 
         // Guardar token en la sesion
