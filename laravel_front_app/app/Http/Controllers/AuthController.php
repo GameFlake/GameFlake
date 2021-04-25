@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class AuthController extends Controller
+{
+    /**
+     * Envia las credenciales del usuario a la API, obtiene un
+     * token de autenticacion y lo guarda en la sesion del usuario,
+     * y redirige a la pagina de inicio.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function login(Request $request) {
+
+        // Validar parametros de la peticion
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // Obtener token de la API
+        $email = $request->email;
+        $password = $request->password;
+        $device = $request->header('User-Agent', 'default');
+        
+        $token = ApiAuth::getToken($email, $password, $device);
+
+        if ($token == null) {
+            return redirect('/login')
+                ->with('error', 'Email incorrecto y/o contraseña incorrecta.');
+        }
+
+        // Guardar token en la sesion
+        $request->session()->regenerate();
+        $request->session()->put('token', $token);
+
+        return redirect('/');
+    }
+
+    /**
+     * Eliminar el token por medio de la API, destruye la sesion
+     * del usuario y redirige a la pagina de login.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request) {
+        $token = $request->session()->get('token');
+        ApiAuth::revokeToken($token);
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken(); // Token de CSRF, no el token de la API
+
+        return redirect('/login');
+    }
+}
