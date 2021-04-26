@@ -6,14 +6,33 @@ use Illuminate\Http\Request;
 
 class OfertaController extends Controller
 {
+    private function readBooks(){
+        //Generar el path al archivo
+      
+        $filePath = storage_path("app/json/books.json");
+
+        //Cargar el archivo
+        if($fileContents = file_get_contents($filePath)){
+            //Transformarlo a una estructura de datos
+            return json_decode($fileContents,true);
+        }
+
+        return [];
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+
+
+       
+        //Laraverl transforma el arreglo a JSON por defecto y cambia el content type
+        return $this->readBooks();
+       //return Book::getAllBooks();
     }
 
     /**

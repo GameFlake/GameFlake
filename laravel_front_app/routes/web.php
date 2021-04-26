@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/ofertas', function () {
-    return view('ofertas');
-});
 
+use App\Http\Controllers\APIController;
+Route:: get('/oferta', [APIController::class , 'listOferta']);
+
+
+/*
+//use App\Http\Controllers\Oferta;
+Route::get('/ofertas', Oferta::class, 'listOferta');
+
+/*
 use App\Http\Controllers\Oferta;
 Route:: resource('/oferta',Oferta::class );
+*/

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class Oferta extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *
