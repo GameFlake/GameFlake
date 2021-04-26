@@ -13,9 +13,10 @@
 
 
 <table>
+
         <thead>
           <tr>
-              <th>{{$textos["cardt1"]}}</th>
+              <th>{{$textos["name"]) }}</th>
               <th>Item Name</th>
               <th>Item Price</th>
           </tr>

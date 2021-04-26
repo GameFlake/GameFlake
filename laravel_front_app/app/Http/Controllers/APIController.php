@@ -38,9 +38,6 @@ class APIController extends Controller
     {
         $textos = $this -> readOfertas();
 
-        var_dump($textos);
-        die();
-       
-        return view("ofertas", ["textos" => $this->textos]);
+        return view("ofertas", ["textos" => $this->$textos]);
     }
 }
