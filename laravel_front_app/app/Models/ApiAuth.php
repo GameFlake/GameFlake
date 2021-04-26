@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Http;
 
-class ApiAuth extends Model
+class ApiAuth
 {
     /**
      * Obtener token de la API con las credenciales
@@ -24,7 +24,7 @@ class ApiAuth extends Model
         ]);
 
         if($response->status() == 200) {
-            return ($response->json());
+            return ($response->json()['token']);
         }
         
         return null;

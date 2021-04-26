@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 // Importar modelos
-use App\Models\Authentication;
+use App\Models\ApiAuth;
 
 class AuthController extends Controller
 {
@@ -33,7 +33,7 @@ class AuthController extends Controller
         $token = ApiAuth::getToken($email, $password, $device);
 
         if ($token == null) {
-            return redirect('/login')
+            return redirect()->route('login')
                 ->with('error', 'Credenciales incorrectas. Vuelva a intentarlo porfavor.');
         }
 
@@ -41,7 +41,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
         $request->session()->put('token', $token);
 
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     /**
@@ -58,6 +58,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken(); // Token de CSRF, no el token de la API
 
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }

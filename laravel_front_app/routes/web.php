@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'home')
+    ->name('home')
+    ->middleware('auth');
+
+Route::view('/coming_soon', 'coming_soon')
+    ->name('coming_soon');
 
 /**
  * -------------------------
