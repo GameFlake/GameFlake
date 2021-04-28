@@ -48,7 +48,7 @@ class CreateJuegosTables extends Migration
         Schema::create('oferta', function (Blueprint $table) {
             $table->id('idOferta');
             $table->date('fechaInicio');
-            $table->date('fechaTerminacion');
+            $table->date('fechaTerminacion')->nullable();
             $table->foreignId('idJuegoRecipiente');
             $table->foreignId('idJuegoOfertante');
             

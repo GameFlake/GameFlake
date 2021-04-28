@@ -15,12 +15,12 @@ class CreateRbacTables extends Migration
     {
         Schema::create('rol', function (Blueprint $table) {
             $table->id('idRol');
-            $table->string('nombre', 10);
+            $table->string('nombre', 20);
         });
 
         Schema::create('permiso', function (Blueprint $table) {
             $table->id('idPermiso');
-            $table->string('nombre', 10);
+            $table->string('nombre', 20);
         });
 
         Schema::create('usuarioRol', function (Blueprint $table) {
