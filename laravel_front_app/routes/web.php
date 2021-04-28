@@ -35,3 +35,6 @@ Route::get('/ofertas', Oferta::class, 'listOferta');
 use App\Http\Controllers\Oferta;
 Route:: resource('/oferta',Oferta::class );
 */
+// Ruta a la pagina simple
+Route::view('team', "team");
+
