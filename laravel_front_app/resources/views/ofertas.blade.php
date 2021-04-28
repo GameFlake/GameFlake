@@ -16,7 +16,6 @@
 
         <thead>
           <tr>
-              <th>{{$textos["name"]) }}</th>
               <th>Item Name</th>
               <th>Item Price</th>
           </tr>

@@ -17,6 +17,7 @@ class APIController extends Controller
     */
    
     private function readOfertas(){
+        /*
         //Genera
         $filePath = storage_path("app/json/ofertas.json");
         //Cargar el archivo
@@ -25,6 +26,7 @@ class APIController extends Controller
             return json_decode($fileContents,true);
         }
         return [];
+        */
     }
 
 
@@ -36,8 +38,10 @@ class APIController extends Controller
      */
     public function listOferta()
     {
-        $textos = $this -> readOfertas();
+        $textos = "hola";
 
-        return view("ofertas", ["textos" => $this->$textos]);
+        //return view("ofertas", ["textos" => $this->$textos]);
+        return view("ofertas");
+    
     }
 }
