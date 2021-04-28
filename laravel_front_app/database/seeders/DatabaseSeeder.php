@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TituloSeeder::class,
             CondicionSeeder::class,
+            ConsolaSeeder::class,
         ]);
     }
 }
