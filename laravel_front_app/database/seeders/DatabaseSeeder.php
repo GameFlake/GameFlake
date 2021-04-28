@@ -15,10 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            //SIN LLAVES FORÁNEAS
             TituloSeeder::class,
             CondicionSeeder::class,
             ConsolaSeeder::class,
             UsuarioSeeder::class,
+            //USA LLAVES FORÁNEAS
+            JuegoSeeder::class,
         ]);
     }
 }
