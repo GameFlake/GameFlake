@@ -16,59 +16,91 @@
       <!--Custom CSS-->
       <link rel="stylesheet" href="{{ url('css/styles.css')}}">
 
-
-    
-    </head>
-
-    
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <body class="blue darken-1">
+<nav>
+    <div class="nav-wrapper indigo darken-4">
+      <img src="{{asset('images/logo.JPG')}}" class= "responsive-img" width="100">
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Catalogo</a></li>
+            <li><a href="#">Mis juegos</a></li>
+            <li><a href="#">Mis ofertas</a></li>
+            <li><a href="#">Mis coincidencias</a></li>
+            <li><a href="#">Mi perfil</a></li>
+            <a class= "blue accent-4 btn">Cerrar sesión</a>
+      </ul>
+    </div>
+  </nav>
 
+  <ul class="sidenav right" id="mobile-demo">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Catalogo</a></li>
+        <li><a href="#">Mis juegos</a></li>
+        <li><a href="#">Mis ofertas</a></li>
+        <li><a href="#">Mis coincidencias</a></li>
+        <li><a href="#">Mi perfil</a></li>
+        <a class= "blue accent-4 btn">Cerrar sesión</a>
+  </ul>
 
-
-        <nav class="indigo darken-4" >
-            <div class="nav-wrapper row">
-                <div class="col s4">
-                    <img src="{{asset('images/logo.JPG')}}" width="100">
-                </div>
-                <div class="col s4 center-align">
-                    <ul id="nav-mobile" class="">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Catalogo</a></li>
-                        <li><a href="#">Mis juegos</a></li>
-                        <li><a href="#">Mis ofertas</a></li>
-                        <li><a href="#">Mis coincidencias</a></li>
-                        <li><a href="#">Mi perfil</a></li>
-                    </ul>
-                </div>
-                <div class="col s4 right-align">
-                        <a class=" blue darken-2 btn white-text">Cerrar sesión</a>
-                </div>
-            </div>
-        </nav>
-
+<script>
+ $(document).ready(function() {
+    $('.sidenav').sidenav();
+});
+</script>       
 
     @yield('register')
     @yield('header')
-
     <main class="containers-fluid">
         @yield('mainContent')
-   
 
+
+        <footer class="page-footer indigo darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">¡Conoce más sobre nosotros!</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+   
+<!--
         <footer class="page-footer indigo darken-4">
           <div class="container">
             <h5 class="center-align">Aviso de privacidad</h5>
           </div>
         </footer>
+        -->
             
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+   
+    
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="{{asset ('assets/css/materialize.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('assets/js/materialize.min.js')}}"></script>
     @stack('scripts')
 
 </html>
