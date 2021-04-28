@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             TituloSeeder::class,
             CondicionSeeder::class,
             ConsolaSeeder::class,
+            UsuarioSeeder::class,
         ]);
     }
 }
