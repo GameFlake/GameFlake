@@ -38,7 +38,15 @@ class JuegoSeeder extends Seeder
                 "idTitulo" => "1", //Crash
                 "idCondicion" => "3", //usado
                 "idConsola" => "2", //Play 5
-            ]
+            ],
+            [
+                "idJuego" => 4,
+                "comentarios" => "Funciona a la perfección, aunque tiene algunos rayoncitos casi invisibles.",
+                "idUsuario" => "1", // Adolfo
+                "idTitulo" => "5", //Overcooked 2
+                "idCondicion" => "3", //usado
+                "idConsola" => "12", //Xbox One
+            ],
         ]);
     }
 }
