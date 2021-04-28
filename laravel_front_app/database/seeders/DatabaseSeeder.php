@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             JuegoSeeder::class,
             OfertaSeeder::class,
             ReviewSeeder::class,
+            InteresSeeder::class,
         ]);
     }
 }
