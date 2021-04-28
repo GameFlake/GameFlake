@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CondicionSeeder::class,
             ConsolaSeeder::class,
             UsuarioSeeder::class,
+            RolSeeder::class,
+            PermisoSeeder::class,
             //USA LLAVES FORÁNEAS
             JuegoSeeder::class,
         ]);
