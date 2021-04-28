@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             //USA LLAVES FORÁNEAS
             JuegoSeeder::class,
             OfertaSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
