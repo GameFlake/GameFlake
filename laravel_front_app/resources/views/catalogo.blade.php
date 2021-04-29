@@ -17,10 +17,12 @@
 <table>
 
         <thead>
+        
           <tr>
-              <th>Item Name</th>
+              <th></th>
               <th>Item Price</th>
           </tr>
+       
         </thead>
 
         <tbody>

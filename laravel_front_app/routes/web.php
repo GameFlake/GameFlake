@@ -30,6 +30,9 @@ Route::get('/catalogo', function () {
     return view('catalogo');
 });
 
+use App\Http\Controllers\TituloController;
+
+Route::get('/titulos', 'App\Http\Controllers\TituloQueryController@index');
 
 /*
 //use App\Http\Controllers\Oferta;
