@@ -11,9 +11,9 @@
 
 @section('mainContent')
 
+<div class="container">
 
-<table>
-
+<table  class="responsive-table striped bordered" >
         <thead>
           <tr>
               <th>Item Name</th>
@@ -57,5 +57,13 @@
       <br>
       <br>
       <br>
+
+
+
+
+</div>
+
+
+
       
 @endsection
