@@ -26,6 +26,10 @@ Route::get('/oferta', function () {
     return view('ofertas');
 });
 
+Route::get('/catalogo', function () {
+    return view('catalogo');
+});
+
 
 /*
 //use App\Http\Controllers\Oferta;
