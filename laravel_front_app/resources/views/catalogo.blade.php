@@ -17,6 +17,18 @@
 <table>
 
         <thead>
+        @php
+        $i = 0;
+        @endphp
+
+        @foreach($titulosquery as $titulo)
+           {{ $titulo["nombre"] }}
+           {{ $titulo["idTitulo"] }}
+        @endforeach
+
+
+
+
         
           <tr>
               <th></th>

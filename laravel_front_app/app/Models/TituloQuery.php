@@ -13,7 +13,7 @@ class TituloQuery extends Model
     public static function getTitulos() {
 
         $response = Http::get(env('API_URL').'/titulos');
-        return $response;
+        return ($response->json());
 
         //return ($response->json()['token']);
 
