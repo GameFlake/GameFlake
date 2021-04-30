@@ -16,21 +16,6 @@ class Titulo extends Model
 
         $titulos = self::all();
 
-       // $result = [];
-
-      //  foreach($titulos as $titulo){
-
-       //     $tituloArray = [
-       //         "idTitulo" => $titulo->idTitulo,
-        //        "nombre" => $titulo->nombre,
-       //         "fechaLanzamiento" => $titulo->fechaLanzamiento,
-       //         "edicion" => $titulo->edicion,
-       //     ];
-
-        //    $result[$titulo->idTitulo] = $tituloArray;
-
-      //  }
-
         return $titulos;
     }
 }
