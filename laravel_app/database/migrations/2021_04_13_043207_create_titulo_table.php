@@ -18,6 +18,7 @@ class CreateTituloTable extends Migration
             $table->string('nombre', 50);
             $table->date('fechaLanzamiento');
             $table->string('edicion', 20);
+            $table->string('imgRuta', 20);
         });
     }
 

@@ -31,7 +31,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Catálogo</a></li>
+            <li><a href="/catalogo">Catálogo</a></li>
             <li><a href="#">Mis juegos</a></li>
             <li><a href="#">Mis ofertas</a></li>
             <li><a href="#">Mis coincidencias</a></li>

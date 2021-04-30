@@ -26,6 +26,9 @@ Route::get('/oferta', function () {
     return view('ofertas');
 });
 
+use App\Http\Controllers\TituloController;
+
+Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
 
 /*
 //use App\Http\Controllers\Oferta;
