@@ -9,7 +9,6 @@ class TituloQueryController extends Controller
 {
     public function index(){
         $titulosquery = TituloQuery::getTitulos();
-        //$titulos = json_encode($titulosquery, true);
         return view("catalogo", ["titulosquery" => $titulosquery]);
     }
 }
