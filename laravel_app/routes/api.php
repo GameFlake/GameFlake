@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+use App\Http\Controllers\OfertaController;
+
+//Mando llamar a el controlador de ofertas
+Route::apiResource("ofertas", OfertaController::class);

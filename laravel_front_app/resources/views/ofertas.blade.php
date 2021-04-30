@@ -14,8 +14,21 @@
 <div class="container">
 
 <table  class="responsive-table striped bordered" >
+
+
+
+@php
+var_dump($ofertaquery);
+@endphp
         <thead>
           <tr>
+          <dl>
+          @foreach($ofertaquery as $oferta)
+           {{ $oferta["idOferta"] }}
+           {{ $oferta["fechaTerminacion"] }}
+        @endforeach
+
+</dl>
               <th>Item Name</th>
               <th>Item Price</th>
           </tr>

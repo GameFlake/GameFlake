@@ -10,15 +10,16 @@ class Oferta extends Model
     
     use HasFactory;
 
+    public $table= "oferta";
 
-    //Get de todas las ofertas consultadas 
-    public static function getAllBooks(){
+    //Get de todas las ofertas  
+    public static function getAllOfertas(){
 
-        $oferta = self::all();
+        $ofertas = self::all();
 
         $result = [];
 
-        foreach($oferta as $oferta){
+        foreach($ofertas as $oferta){
 
             $ofertaArray = [
                 "idOferta" => $oferta->idOferta,
@@ -28,15 +29,11 @@ class Oferta extends Model
                 "idJuegoOfertante" =>$oferta->idJuegoOfertante,
             ];
 
-            foreach($oferta->authors as $author){
-                $bookArray["authors"][] = $author->getFullName();
-            }
-
-            $result[$oferta->idOfert] = $ofertaArray;
+            $result[$oferta->idOferta] = $ofertaArray;
 
         }
 
-        return $result;
+        return $ofertas;
     }
 
 
