@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 use App\Http\Controllers\TituloController;
 
 Route::apiResource("titulos", TituloController::class);
+Route::apiResource('titulos.show', TituloController::class);

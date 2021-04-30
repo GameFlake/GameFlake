@@ -18,4 +18,11 @@ class Titulo extends Model
 
         return $titulos;
     }
+
+    public static function getTitulo($id){
+        $titulo = self::where('idTitulo', $id)
+               ->get();
+        return $titulo;
+
+    }
 }
