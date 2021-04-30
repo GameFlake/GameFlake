@@ -43,7 +43,7 @@
 
   <ul class="sidenav right" id="mobile-demo">
         <li><a href="#">Inicio</a></li>
-        <li><a href="#">Catálogo</a></li>
+        <li><a href="/catalogo">Catálogo</a></li>
         <li><a href="#">Mis juegos</a></li>
         <li><a href="#">Mis ofertas</a></li>
         <li><a href="#">Mis coincidencias</a></li>
@@ -74,7 +74,7 @@
                 <h5 class="white-text">Información</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Catálogo</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/catalogo">Catálogo</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis juego</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis ofertas</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis coincidencias</a></li>

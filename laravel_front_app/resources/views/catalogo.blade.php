@@ -17,7 +17,7 @@
 <div class="container">
   <div class="row">
     @foreach($titulosquery as $titulo)
-    <div class="col s4">
+    <div class="col s12 m4">
       <div class="card small">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" height="160" src={{ $titulo['imgRuta'] }}>

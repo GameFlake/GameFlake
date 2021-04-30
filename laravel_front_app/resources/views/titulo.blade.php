@@ -18,8 +18,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s4">
-
+    <div class="col s12 m6">
+      <div class="waves-effect waves-block waves-light">
+        <img class="activator responsive-img" height="300" src=../{{ $titulo["imgRuta"] }}>
+      </div>
     </div>
   </div>
 </div>
