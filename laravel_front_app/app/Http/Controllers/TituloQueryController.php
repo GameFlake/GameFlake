@@ -11,4 +11,9 @@ class TituloQueryController extends Controller
         $titulosquery = TituloQuery::getTitulos();
         return view("catalogo", ["titulosquery" => $titulosquery]);
     }
+
+    public function showTitulo($id){
+        $tituloquery = TituloQuery::getTitulo($id);
+        return view("titulo", ["tituloquery" => $tituloquery]);
+    }
 }

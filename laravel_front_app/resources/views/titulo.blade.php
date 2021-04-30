@@ -5,10 +5,12 @@
 @section('header')
 
 <div class="container">
-<h1 class='text-center titulo white-text'>Nombre título</h1>
+@foreach($tituloquery as $titulo)
+<h1 class='text-center titulo white-text'>{{ $titulo["nombre"] }}</h1>
 </div>
 <br>
 <br>
+
 
 @endsection
 
@@ -17,9 +19,11 @@
 <div class="container">
   <div class="row">
     <div class="col s4">
-      
+
     </div>
   </div>
 </div>
+
+@endforeach
       
 @endsection

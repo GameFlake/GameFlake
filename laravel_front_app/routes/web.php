@@ -29,6 +29,7 @@ Route::get('/oferta', function () {
 use App\Http\Controllers\TituloController;
 
 Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
+Route::get('/catalogo/{id}', 'App\Http\Controllers\TituloQueryController@showTitulo');
 
 /*
 //use App\Http\Controllers\Oferta;
