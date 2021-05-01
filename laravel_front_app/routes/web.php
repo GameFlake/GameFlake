@@ -18,12 +18,7 @@ Route::get('/', function () {
 });
 
 
-
-Route::get('/oferta', function () {
-    return view('ofertas');
-});
-
-Route::get('/prueba', 'App\Http\Controllers\OfertaQueryController@index');
+Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 
 
 // Ruta a la pagina simple

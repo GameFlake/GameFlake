@@ -74,11 +74,11 @@
         </thead>
 
         <tbody class="indigo darken-4 white-text">
-        @foreach ($ofertaquery as $oferta)
+        @foreach ($misofertas as $ofertas)
             <tr>
-              <td class="center-align">{{ $oferta["nombre"] }}</td>
-              <td class="center-align">{{ $oferta["TO"] }}</td>
-              <td class="center-align">{{ $oferta["TR"] }}</td>
+              <td class="center-align">{{ $ofertas["TR"] }}</td>
+              <td class="center-align">{{ $ofertas["TO"] }}</td>
+              <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
               <td class="center-align"><a href="#"><i class="material-icons medium red-text">close</i></a> </td>
             </tr>
         @endforeach
@@ -94,7 +94,6 @@
       <br>
       <br>
       <br>
-
 </div>
 
 
