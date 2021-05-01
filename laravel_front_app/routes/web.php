@@ -17,27 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-use App\Http\Controllers\APIController;
-Route:: get('/oferta', [APIController::class , 'listOferta']);
-*/
 
-Route::get('/oferta', function () {
-    return view('ofertas');
-});
+Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 
 use App\Http\Controllers\TituloController;
 
 Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
 
-/*
-//use App\Http\Controllers\Oferta;
-Route::get('/ofertas', Oferta::class, 'listOferta');
-
-/*
-use App\Http\Controllers\Oferta;
-Route:: resource('/oferta',Oferta::class );
-*/
 // Ruta a la pagina simple
 Route::view('team', "team");
 

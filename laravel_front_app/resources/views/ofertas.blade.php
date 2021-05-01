@@ -2,60 +2,101 @@
 
 @section('pageTitle', "GameFlake")
 
-@section('header')
 
-<h1 class='text-center titulo white-text'><i class="material-icons large white-text">arrow_back</i> Ofertas recibidas</h1>
-<br>
-<br>
+
+@section('header')
+  <div class="container">
+    <h1 class='text-center titulo white-text'><a href="#"><i class="material-icons large white-text">arrow_back</i></a> Ofertas recibidas</h1>
+    <br>
+    <br>
+  </div>
 @endsection
 
 @section('mainContent')
+<div class="container">
 
+      <table  class="responsive-table" >
 
-<table>
-
-        <thead>
-          <tr>
-              <th>Item Name</th>
-              <th>Item Price</th>
+        <thead class="grey darken-4 ">
+          <tr class="white-text  ">
+              <th class="center-align">Nombre</th>
+              <th class="center-align">Quiere cambiar </th>
+              <th class="center-align">Por tu</th>
+              <th class="center-align">Aceptar / Rechazar </th>
+              <th class="center-align">Estado</th>
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
+        <tbody class="indigo darken-4 white-text">
+        @foreach ($ofertaquery as $oferta)
+            <tr>
+              <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
+              <td class="center-align">{{ $oferta["TO"] }}</td>
+              <td class="center-align">{{ $oferta["TR"] }}</td>
+              <td class="center-align">
+                <a href="#"><i class="material-icons medium green-text">check</i></a>
+                <a href="#"><i class="material-icons medium red-text">close</i></a>  
+              </td>
+              <td class="center-align"><a
+              @if ($oferta["estado"] === 'Pendiente')
+              class="yellow darken-2 btn"
+              @else
+              class="green accent-4  btn"
+              @endif
+              >{{ $oferta["estado"] }}</a></td>
+              
+            </tr>
+        @endforeach
+
+          
         </tbody>
       </table>
       <br>
       <br>
       <br>
+      
+  <hr>
+  <br>
+  <br>
+  <h1 class='text-center titulo white-text'> Ofertas realizadas</h1>
+
+  <br>
+  <br>
+  <table  class="responsive-table" >
+
+        <thead class="grey darken-4 ">
+          <tr class="white-text  ">
+              <th class="center-align">Quiero cambiar</th>
+              <th class="center-align">Por</th>
+              <th class="center-align">De</th>
+              <th class="center-align">Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody class="indigo darken-4 white-text">
+        @foreach ($misofertas as $ofertas)
+            <tr>
+              <td class="center-align">{{ $ofertas["TR"] }}</td>
+              <td class="center-align">{{ $ofertas["TO"] }}</td>
+              <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
+              <td class="center-align"><a href="#"><i class="material-icons medium red-text">close</i></a> </td>
+            </tr>
+        @endforeach
+
+          
+        </tbody>
+      </table>
+
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+</div>
+
+
+
       
 @endsection

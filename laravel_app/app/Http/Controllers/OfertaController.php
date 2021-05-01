@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Oferta;
 
-class Oferta extends Controller
+class OfertaController extends Controller
 {
-   
     /**
-     * Display a listing of the resource.
+     * Mandar llamar a la función que te hace la consulta en la Base de datos 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        //Laravel transforma el contedo a json por defecto en esta parte
+        return Oferta::getAllOfertas();
     }
 
     /**
