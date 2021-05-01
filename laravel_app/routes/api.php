@@ -27,3 +27,8 @@ Route::apiResource("ofertas", OfertaController::class);
 use App\Http\Controllers\MisOfertasController;
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("misofertas", MisOfertasController::class);
+
+use App\Http\Controllers\TituloController;
+
+Route::apiResource("titulos", TituloController::class);
+

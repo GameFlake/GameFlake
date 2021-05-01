@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 
+use App\Http\Controllers\TituloController;
+
+Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
 
 // Ruta a la pagina simple
 Route::view('team', "team");
