@@ -20,7 +20,7 @@
         <thead class="grey darken-4 ">
           <tr class="white-text  ">
               <th class="center-align">Nombre</th>
-              <th class="center-align">Quiere cambiar</th>
+              <th class="center-align">Quiere cambiar </th>
               <th class="center-align">Por tu</th>
               <th class="center-align">Aceptar / Rechazar </th>
               <th class="center-align">Estado</th>
@@ -37,7 +37,13 @@
                 <a href="#"><i class="material-icons medium green-text">check</i></a>
                 <a href="#"><i class="material-icons medium red-text">close</i></a>  
               </td>
-              <td class="center-align"><a class="waves-effect waves-light btn">{{ $oferta["estado"] }}</a></td>
+              <td class="center-align"><a
+              @if ($oferta["estado"] === 'Pendiente')
+              class="yellow darken-2 btn"
+              @else
+              class="green accent-4  btn"
+              @endif
+              >{{ $oferta["estado"] }}</a></td>
               
             </tr>
         @endforeach

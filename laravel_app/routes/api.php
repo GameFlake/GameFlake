@@ -20,5 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 use App\Http\Controllers\OfertaController;
 
-//Mando llamar a el controlador de ofertas
+//Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("ofertas", OfertaController::class);
+
+
+use App\Http\Controllers\MisOfertasController;
+//Mando llamar a el controlador de ofertas (las ofertas que me hacen)
+Route::apiResource("misofertas", MisOfertasController::class);
