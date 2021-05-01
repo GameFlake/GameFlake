@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class OfertaQueryController extends Controller
 {
+    //Llamar la función del modelo que me regresa el json, para enviarselo a la vista
+    //Llamo la funcion de ofertas recibidas y realizadas
+    //@return la vista con las dos consultas necesarias
     public function index(){
         $ofertaquery= OfertaQuery:: getOferta();
         $misofertasquery=MisOfertasQuery:: getMisOfertas();

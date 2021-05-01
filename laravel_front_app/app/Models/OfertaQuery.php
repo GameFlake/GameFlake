@@ -11,6 +11,8 @@ class OfertaQuery extends Model
 {
     use HasFactory;
 
+    //Mandar a llamar a la api, la información que necesito por medio del URL
+    // @return un json con esta información
     public static function getOferta() {
 
         $response = Http::get(env('API_URL').'/ofertas');

@@ -11,7 +11,7 @@ class MisOfertas extends Model
     use HasFactory;
 
 
-    //Get de todas las ofertas  
+    //Get de todas las ofertas que he hecho por los juegos que tengo 
     public static function getAllMisOfertas(){
         $oferta= DB::table('juego')
         ->select('juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')

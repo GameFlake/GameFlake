@@ -8,7 +8,7 @@ use App\Models\Oferta;
 class OfertaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mandar llamar a la función que te hace la consulta en la Base de datos 
      *
      * @return \Illuminate\Http\Response
      */

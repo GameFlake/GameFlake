@@ -15,7 +15,7 @@ class Oferta extends Model
 
     public $table= "oferta";
 
-    //Get de todas las ofertas  
+    //Get de todas las ofertas que me han hecho por mis juegos 
     public static function getAllOfertas(){
         $oferta= DB::table('juego')
         ->select('juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
