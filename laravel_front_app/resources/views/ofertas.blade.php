@@ -23,48 +23,24 @@ var_dump($ofertaquery);
         <thead>
           <tr>
           <dl>
-          @foreach($ofertaquery as $oferta)
-           {{ $oferta["idOferta"] }}
-           {{ $oferta["fechaTerminacion"] }}
-        @endforeach
-
+          
 </dl>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>Nombre</th>
+              <th>Queire cambiar</th>
+              <th>Por tu</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
+        @foreach ($ofertaquery as $oferta)
+            <tr>
+              <td>{{ $oferta["UOFertante"] }}</td>
+              <td>{{ $oferta["TO"] }}</td>
+              <td>{{ $oferta["TR"] }}</td>
+            </tr>
+        @endforeach
+
+          
         </tbody>
       </table>
       <br>
