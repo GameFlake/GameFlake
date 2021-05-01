@@ -6,7 +6,7 @@
 
 @section('header')
   <div class="container">
-    <h1 class='text-center titulo white-text'><i class="material-icons large white-text">arrow_back</i> Ofertas recibidas</h1>
+    <h1 class='text-center titulo white-text'><a href="#"><i class="material-icons large white-text">arrow_back</i></a> Ofertas recibidas</h1>
     <br>
     <br>
   </div>
@@ -30,14 +30,14 @@
         <tbody class="indigo darken-4 white-text">
         @foreach ($ofertaquery as $oferta)
             <tr>
-              <td class="center-align">{{ $oferta["UOFertante"] }}</td>
+              <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
               <td class="center-align">
                 <a href="#"><i class="material-icons medium green-text">check</i></a>
                 <a href="#"><i class="material-icons medium red-text">close</i></a>  
               </td>
-              <td class="center-align"><a class="waves-effect waves-light btn">Pendiente</a></td>
+              <td class="center-align"><a class="waves-effect waves-light btn">{{ $oferta["estado"] }}</a></td>
               
             </tr>
         @endforeach
@@ -70,7 +70,7 @@
         <tbody class="indigo darken-4 white-text">
         @foreach ($ofertaquery as $oferta)
             <tr>
-              <td class="center-align">{{ $oferta["UOFertante"] }}</td>
+              <td class="center-align">{{ $oferta["nombre"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
               <td class="center-align"><a href="#"><i class="material-icons medium red-text">close</i></a> </td>
