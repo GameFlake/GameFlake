@@ -41,6 +41,32 @@ Route::get('/logout', [AuthController::class, 'logout'])
     ->name('logout')
     ->middleware('auth');
 
+/**
+ * -------------------------
+ *         USUARIOS
+ * -------------------------
+ */
+
+// Mostrar vista para registrar nuevo usuario
+Route::get('/users/create', [UserController::class], 'create');
+
+// Registrar nuevo usuario
+Route::post('/users', [UserController::class], 'store');
+
+
+/**
+ * -------------------------
+ *         TITULOS
+ * -------------------------
+ */
+
+ 
+ /**
+ * -------------------------
+ *         OFERTAS
+ * -------------------------
+ */
+
 
 /*
 use App\Http\Controllers\APIController;
@@ -60,6 +86,13 @@ Route::get('/ofertas', Oferta::class, 'listOferta');
 use App\Http\Controllers\Oferta;
 Route:: resource('/oferta',Oferta::class );
 */
+
+/**
+ * -------------------------
+ *           OTROS
+ * -------------------------
+ */
+
 // Ruta a la pagina simple
 Route::view('team', "team");
 
