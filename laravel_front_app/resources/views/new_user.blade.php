@@ -28,87 +28,101 @@
 
                     <form action="{{ route('store_user') }}" method="POST">
                         @csrf
-                        <div class="row">
+                        <div class="row flex-row align-items-end">
                             <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Ingresa tu nombre" id="first_name" type="text" 
+                                            name="first_name" class="validate" value="{{ old('first_name') }}" required>
+                                    <label for="first_name">Nombre</label>
+                                </div>
                                 @error('first_name')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <div class="input-field mb-5">
-                                    <input placeholder="Ingresa tu nombre" id="first_name" type="text" 
-                                            name="first_name" class="validate" value="{{ old('first_name') }}" required>
-                                    <label for="first_name">Nombre</label>
+                            </div>
+                            <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Ingresa tu nombre" id="last_name" type="text" 
+                                            name="last_name" class="validate" value="{{ old('last_name') }}" required>
+                                    <label for="last_name">Apellido</label>
                                 </div>
-
                                 @error('last_name')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <div class="input-field mb-5">
-                                    <input placeholder="Ingresa tu nombre" id="last_name" type="text" 
-                                            name="last_name" class="validate" value="{{ old('last_name') }}" required>
-                                    <label for="last_name">Apellido</label>
-                                </div>
-
-                                @error('password')
-                                <div>
-                                    <small class="red-text text-darken-1">{{ $message }}</small>
-                                </div>
-                                @enderror
-                                <div class="input-field mb-4">
-                                    <input placeholder="Ingresa tu contraseña" id="password" type="password" 
-                                            name="password" class="validate" value="{{ old('password') }}" required>
-                                    <label for="password">Contraseña</label>
-                                </div>
                             </div>
+                            
+                        </div>
+
+                        <div class="row flex-row align-items-end">
                             <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Ingresa tu correo" id="email" type="email" 
+                                            name="email" class="validate" value="{{ old('email') }}" required>
+                                    <label for="email">Correo</label>
+                                </div>
                                 @error('email')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <div class="input-field mb-5">
-                                    <input placeholder="Ingresa tu correo" id="email" type="email" 
-                                            name="email" class="validate" value="{{ old('email') }}" required>
-                                    <label for="email">Correo</label>
+                            </div>
+                            <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Selecciona tu fecha de nacimiento" type="text" 
+                                            name="birthday" class="datepicker" value="{{ old('birthday') }}" required>
+                                    <label for="birthday">Fecha de nacimiento</label>
                                 </div>
-
                                 @error('birthday')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <div class="input-field mb-5">
-                                    <input placeholder="Selecciona tu fecha de nacimiento" type="text" 
-                                            name="birthday" class="datepicker" value="{{ old('birthday') }}" required>
-                                    <label for="birthday">Fecha de nacimiento</label>
+                            </div>
+                        </div>
+
+                        <div class="row flex-row align-items-end">
+                            <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Ingresa tu contraseña" id="password" type="password" 
+                                            name="password" class="validate" required>
+                                    <label for="password">Contraseña</label>
                                 </div>
-                                
+                                @error('password')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col s12 l6">
+                                <div class="input-field">
+                                    <input placeholder="Ingresa tu username" id="user_name" type="text" 
+                                            name="user_name" class="validate" value="{{ old('user_name') }}"  required>
+                                    <label for="user_name">Username</label>
+                                </div>
                                 @error('user_name')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <div class="input-field mb-4">
-                                    <input placeholder="Ingresa tu username" id="user_name" type="text" 
-                                            name="user_name" class="validate" value="{{ old('user_name') }}"  required>
-                                    <label for="user_name">Username</label>
-                                </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" name="terms" @if (old('user_name')) checked @endif required/>
+                                        <span>He leido y acepto los <a href="https://github.com/GameFlake/GameFlake">términos y condiciones</a>.</span>
+                                    </label>
+                                </p>
                                 @error('terms')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>
                                 @enderror
-                                <p>
-                                    <label>
-                                        <input type="checkbox" class="filled-in" checked="{{ old('checkbox') }}"  name="terms" required/>
-                                        <span>He leido y acepto los <a href="https://github.com/GameFlake/GameFlake">términos y condiciones</a>.</span>
-                                    </label>
-                                </p>
                             </div>
                         </div>
 

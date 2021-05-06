@@ -49,7 +49,7 @@ class UserController extends Controller
         // Registrar al usuario con la API
         $message = ApiUser::create($first_name, $last_name, $password, $email, $birthday, $user_name);
         if ($message != "") {
-            return redirect()->route('login')
+            return redirect()->route('create_user')
                 ->with('error', $message);
         }
         

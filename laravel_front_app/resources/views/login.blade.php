@@ -38,6 +38,12 @@
                             <input placeholder="Ingresa tu usuario o correo" id="email" type="email" name="email" class="validate" required>
                             <label for="email">Usuario o correo</label>
                         </div>
+
+                        @error('password')
+                        <div>
+                            <small class="alert alert-danger">{{ $message }}</small>
+                        </div>
+                        @enderror
                         <div class="input-field mb-4">
                             <input placeholder="Ingresa tu contraseña" id="password" type="password" name="password" class="validate" required>
                             <label for="password">Contraseña</label>
