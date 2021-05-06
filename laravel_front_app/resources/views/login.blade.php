@@ -6,69 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/utilities.css') }}" />
 
     <title>Login</title>
-
-    <style>
-        .d-flex {
-            display: flex;
-        }
-
-        .justify-content-center {
-            justify-content: center;  
-        }
-
-        .bottom-space {
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-
-    </style>
 </head>
 <body class="deep-purple">
-    <div class="container">
-        <div class="row">
-            <br><br><br>
-            <div class="col s12 m8 l6 offset-m2 offset-l3">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title bottom-space center-align">Iniciar sesión</span>
-
-                        <form action="login" method="POST">
-                            @csrf
-
-                            @error('email')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <div class="input-field">
-                                <input placeholder="Ingresa tu usuario o correo" id="email" type="email" name="email" class="validate" required>
-                                <label for="email">Usuario o correo</label>
-                            </div>
-                            <div class="input-field">
-                                <input placeholder="Ingresa tu contraseña" id="password" type="password" name="password" class="validate" required>
-                                <label for="password">Contraseña</label>
-                            </div>
-                                    
-                            @if (session('error'))
-                            <div class="bottom-space">
-                                <small class="red-text text-darken-1">{{ session('error') }}</small>
-                            </div>
-                            @endif
-
-                            <div class="d-flex justify-content-center">                                    
-                                <button class="deep-purple accent-2 btn waves-effect waves-light bottom-space " type="submit" name="action">Iniciar sesión</button>
-                            </div>
-                        </form>
-
-                        <p class="center-align">¿No tienes una cuenta? <a href="{{ route('coming_soon') }}">Regístrate</a></p>
+    <div class="container row flex-row align-items-center mb-0" style="min-height: 100vh">
+        <div class="col s12 m8 l6 offset-m2 offset-l3">
+            <div class="card">
+                <div class="card-content">
+                    <div class="flex-row justify-content-center">
+                        <img src="{{ asset('/img/logo_paredmart.svg') }}" height="75px" alt="Logo GameFlake">
                     </div>
+                    <span class="card-title center-align pb-3">Inicia sesión</span>
+
+                    @if (session('error'))
+                    <div class="flex-row justify-content-center mb-3">
+                        <small class="red-text text-darken-1">{{ session('error') }}</small>
+                    </div>
+                    @endif
+
+                    <form action="login" method="POST">
+                        @csrf
+
+                        @error('email')
+                        <div>
+                            <small class="alert alert-danger">{{ $message }}</small>
+                        </div>
+                        @enderror
+                        <div class="input-field mb-5">
+                            <input placeholder="Ingresa tu usuario o correo" id="email" type="email" name="email" class="validate" required>
+                            <label for="email">Usuario o correo</label>
+                        </div>
+                        <div class="input-field mb-4">
+                            <input placeholder="Ingresa tu contraseña" id="password" type="password" name="password" class="validate" required>
+                            <label for="password">Contraseña</label>
+                        </div>
+                                
+                        <div class="flex-row justify-content-center mb-4">
+                            <button class="deep-purple accent-2 btn waves-effect waves-light" type="submit" name="action">Iniciar sesión</button>
+                        </div>
+                    </form>
+
+                    <p class="center-align">¿No tienes una cuenta? <a href="{{ route('coming_soon') }}">Regístrate</a></p>
                 </div>
             </div>
         </div>
     </div>
     
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
