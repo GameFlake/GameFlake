@@ -30,16 +30,28 @@
                         @csrf
                         <div class="row">
                             <div class="col s12 l6">
+                                @error('first_name')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
                                 <div class="input-field mb-5">
                                     <input placeholder="Ingresa tu nombre" id="first_name" type="text" 
                                             name="first_name" class="validate" required>
                                     <label for="first_name">Nombre</label>
                                 </div>
+
+                                @error('last_name')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
                                 <div class="input-field mb-5">
                                     <input placeholder="Ingresa tu nombre" id="last_name" type="text" 
                                             name="last_name" class="validate" required>
                                     <label for="last_name">Apellido</label>
                                 </div>
+
                                 <div class="input-field mb-4">
                                     <input placeholder="Ingresa tu contraseña" id="password" type="password" 
                                             name="password" class="validate" required>
@@ -56,6 +68,7 @@
                                     <input placeholder="Ingresa tu correo" id="email" type="email" name="email" class="validate" required>
                                     <label for="email">Correo</label>
                                 </div>
+
                                 @error('birthday')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
@@ -65,6 +78,12 @@
                                     <input placeholder="Selecciona tu fecha de nacimiento" type="text" name="birthday" class="datepicker" required>
                                     <label for="birthday">Fecha de nacimiento</label>
                                 </div>
+                                
+                                @error('user_name')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
                                 <div class="input-field mb-4">
                                     <input placeholder="Ingresa tu username" id="user_name" type="text" 
                                             name="user_name" class="validate" required>
@@ -74,7 +93,7 @@
                             <div class="col s12">
                                 <p>
                                     <label>
-                                        <input type="checkbox" class="filled-in" required/>
+                                        <input type="checkbox" class="filled-in" name="terms" required/>
                                         <span>He leido y acepto los <a href="https://github.com/GameFlake/GameFlake">términos y condiciones</a>.</span>
                                     </label>
                                 </p>
