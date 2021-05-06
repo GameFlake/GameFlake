@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 // Importar modelos
 use App\Models\Usuario;
@@ -72,6 +73,12 @@ class UserController extends Controller
         $newUser->telefono = $phone;
         $newUser->username = $user_name;
         $newUser->save();
+        
+        // Asignar rol al usuario
+        DB::table('usuarioRol')->insert([
+            'idUsuario' =>  $newUser->idUsuario,
+            'idRol' => 202
+        ]);
 
         $responseJson = ['mensaje' => 'El usuario fue registrado exitosamente.'];
         return response()->json($responseJson, 200);
