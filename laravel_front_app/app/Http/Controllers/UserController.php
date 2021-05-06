@@ -35,10 +35,10 @@ class UserController extends Controller
             'password' => 'required',
             'email' => 'required|email',
             'birthday' => 'required|date|before:-13 years',
-            'user_name' => 'required|alphanumeric',
+            'user_name' => 'required|alpha_num',
             'terms' => 'required',
         ]);
-
+        
         $first_name = $request->first_name;
         $last_name = $request->last_name;
         $password = $request->password;

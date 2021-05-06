@@ -26,7 +26,7 @@
                     </div>
                     @endif
 
-                    <form action="users" method="POST">
+                    <form action="{{ route('store_user') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col s12 l6">
@@ -37,7 +37,7 @@
                                 @enderror
                                 <div class="input-field mb-5">
                                     <input placeholder="Ingresa tu nombre" id="first_name" type="text" 
-                                            name="first_name" class="validate" required>
+                                            name="first_name" class="validate" value="{{ old('first_name') }}" required>
                                     <label for="first_name">Nombre</label>
                                 </div>
 
@@ -48,13 +48,18 @@
                                 @enderror
                                 <div class="input-field mb-5">
                                     <input placeholder="Ingresa tu nombre" id="last_name" type="text" 
-                                            name="last_name" class="validate" required>
+                                            name="last_name" class="validate" value="{{ old('last_name') }}" required>
                                     <label for="last_name">Apellido</label>
                                 </div>
 
+                                @error('password')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
                                 <div class="input-field mb-4">
                                     <input placeholder="Ingresa tu contraseña" id="password" type="password" 
-                                            name="password" class="validate" required>
+                                            name="password" class="validate" value="{{ old('password') }}" required>
                                     <label for="password">Contraseña</label>
                                 </div>
                             </div>
@@ -65,7 +70,8 @@
                                 </div>
                                 @enderror
                                 <div class="input-field mb-5">
-                                    <input placeholder="Ingresa tu correo" id="email" type="email" name="email" class="validate" required>
+                                    <input placeholder="Ingresa tu correo" id="email" type="email" 
+                                            name="email" class="validate" value="{{ old('email') }}" required>
                                     <label for="email">Correo</label>
                                 </div>
 
@@ -75,7 +81,8 @@
                                 </div>
                                 @enderror
                                 <div class="input-field mb-5">
-                                    <input placeholder="Selecciona tu fecha de nacimiento" type="text" name="birthday" class="datepicker" required>
+                                    <input placeholder="Selecciona tu fecha de nacimiento" type="text" 
+                                            name="birthday" class="datepicker" value="{{ old('birthday') }}" required>
                                     <label for="birthday">Fecha de nacimiento</label>
                                 </div>
                                 
@@ -86,14 +93,19 @@
                                 @enderror
                                 <div class="input-field mb-4">
                                     <input placeholder="Ingresa tu username" id="user_name" type="text" 
-                                            name="user_name" class="validate" required>
+                                            name="user_name" class="validate" value="{{ old('user_name') }}"  required>
                                     <label for="user_name">Username</label>
                                 </div>
                             </div>
                             <div class="col s12">
+                                @error('terms')
+                                <div>
+                                    <small class="red-text text-darken-1">{{ $message }}</small>
+                                </div>
+                                @enderror
                                 <p>
                                     <label>
-                                        <input type="checkbox" class="filled-in" name="terms" required/>
+                                        <input type="checkbox" class="filled-in" checked="{{ old('checkbox') }}"  name="terms" required/>
                                         <span>He leido y acepto los <a href="https://github.com/GameFlake/GameFlake">términos y condiciones</a>.</span>
                                     </label>
                                 </p>

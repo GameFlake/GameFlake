@@ -49,10 +49,12 @@ Route::get('/logout', [AuthController::class, 'logout'])
  */
 
 // Mostrar vista para registrar nuevo usuario
-Route::get('/users/create', [UserController::class, 'create']);
+Route::get('/users/create', [UserController::class, 'create'])
+    ->name('create_user');
 
 // Registrar nuevo usuario
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])
+    ->name('store_user');
 
 
 /**
