@@ -26,7 +26,7 @@
                     </div>
                     @endif
 
-                    <form action="login" method="POST">
+                    <form action="{{ route('login') }}" method="POST">
                         @csrf
 
                         @error('email')
@@ -48,7 +48,7 @@
                         </div>
                     </form>
 
-                    <p class="center-align">¿No tienes una cuenta? <a href="{{ route('coming_soon') }}">Regístrate</a></p>
+                    <p class="center-align">¿No tienes una cuenta? <a href="{{ route('create_user') }}">Regístrate</a></p>
                 </div>
             </div>
         </div>
