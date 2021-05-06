@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// Importar modelos
+use App\Models\ApiAuth;
+use App\Models\ApiUser;
+
 class UserController extends Controller
 {
     /**
@@ -43,7 +47,11 @@ class UserController extends Controller
         $user_name = $request->user_name;
 
         // Registrar al usuario con la API
-        ApiUser::create($first_name, $last_name, $password, $email, $birthday, $user_name);
+        $message = ApiUser::create($first_name, $last_name, $password, $email, $birthday, $user_name);
+        if ($message != "") {
+            return redirect()->route('login')
+                ->with('error', $message);
+        }
         
         // Iniciar sesion del usuario
         $device = $request->header('User-Agent', 'default');        
