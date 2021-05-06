@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 
 // Importar modelos
 use App\Models\Usuario;
@@ -19,13 +19,20 @@ class AuthController extends Controller
      */
     public function createToken(Request $request) {
         
-        // Validar parametros POST de la peticion
-        $request->validate([
+        // Validar parametros de la peticion
+        $validator = Validator::make($request->all(), [
             'email_or_username' => 'required',
             'password' => 'required',
             'device_name' => 'required',
         ]);
-        
+        if ($validator->fails()) {
+            $responseJson = [
+                'error' => 'Los parametros de la petición no son válidos.',
+                'codigo' => 422 
+            ];
+            return response()->json($responseJson, 422);
+        }
+
         $userByEmail = Usuario::where('correo', $request->email_or_username)->first();
         $userByUsername = Usuario::where('username', $request->email_or_username)->first();
 
