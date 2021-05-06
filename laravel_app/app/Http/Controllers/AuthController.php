@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+
+// Importar modelos
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -30,9 +32,9 @@ class AuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             $responseJson = [
                 'error' => 'Credenciales incorrectas.',
-                'codigo' => 400
+                'codigo' => 401 
             ];
-            return response()->json($responseJson, 400);
+            return response()->json($responseJson, 401);
         }
         
         // Crear y devolver token
