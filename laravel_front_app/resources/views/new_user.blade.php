@@ -28,7 +28,7 @@
 
                     <form action="{{ route('store_user') }}" method="POST">
                         @csrf
-                        <div class="row flex-row align-items-end">
+                        <div class="row">
                             <div class="col s12 l6">
                                 <div class="input-field">
                                     <input placeholder="Ingresa tu nombre" id="first_name" type="text" 
@@ -56,7 +56,7 @@
                             
                         </div>
 
-                        <div class="row flex-row align-items-end">
+                        <div class="row">
                             <div class="col s12 l6">
                                 <div class="input-field">
                                     <input placeholder="Ingresa tu correo" id="email" type="email" 
@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                        <div class="row flex-row align-items-end">
+                        <div class="row">
                             <div class="col s12 l6">
                                 <div class="input-field">
                                     <input placeholder="Ingresa tu contraseña" id="password" type="password" 
