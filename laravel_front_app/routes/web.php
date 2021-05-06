@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Importar controladores
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 
 Route::view('/', 'home')
@@ -48,10 +49,10 @@ Route::get('/logout', [AuthController::class, 'logout'])
  */
 
 // Mostrar vista para registrar nuevo usuario
-Route::get('/users/create', [UserController::class], 'create');
+Route::get('/users/create', [UserController::class, 'create']);
 
 // Registrar nuevo usuario
-Route::post('/users', [UserController::class], 'store');
+Route::post('/users', [UserController::class, 'store']);
 
 
 /**
