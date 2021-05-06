@@ -50,7 +50,7 @@ class UserController extends Controller
         $message = ApiUser::create($first_name, $last_name, $password, $email, $phone, $user_name);
         if ($message != "") {
             return redirect()->route('create_user')
-                ->with('error', $message);
+                ->with('error', $message)->withInput();
         }
         
         // Iniciar sesion del usuario
