@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class UsuarioSeeder extends Seeder
                 "nombre" => "Adolfo",
                 "apellido" => "Acosta",
                 "correo" => "aacost@gmail.com",
-                "password" => "%&jkkldAcosta",
+                "password" => Hash::make("%&jkkldAcosta"),
                 "telefono" => "4423765643",
                 "username" => "acostagamiing",
             ],
@@ -29,7 +30,7 @@ class UsuarioSeeder extends Seeder
                 "nombre" => "Guillermo",
                 "apellido" => "Espino",
                 "correo" => "espinoc@gmail.com",
-                "password" => "myPa$$198",
+                "password" => Hash::make("myPa$$198"),
                 "telefono" => "4423789076",
                 "username" => "glinkisgaming",
             ],
@@ -38,9 +39,18 @@ class UsuarioSeeder extends Seeder
                 "nombre" => "Valeria",
                 "apellido" => "Guerra",
                 "correo" => "valedo@gmail.com",
-                "password" => "herPa$$765",
+                "password" => Hash::make("herPa$$765"),
                 "telefono" => "4423459806",
                 "username" => "valisselling",
+            ],
+            [
+                "idUsuario" => 4,
+                "nombre" => "Jules",
+                "apellido" => "Peter",
+                "correo" => "jules@peter.com",
+                "password" => Hash::make("pass"),
+                "telefono" => "4423459806",
+                "username" => "julian",
             ]
         ]);
     }

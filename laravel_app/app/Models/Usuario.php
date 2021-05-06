@@ -1,9 +1,17 @@
 <?php
 
-use Laravel\Sanctum\PersonalAccessToken as SanctumPersonalAccessToken;
+namespace App\Models;
 
-class User extends SanctumPersonalAccessToken
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class Usuario extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,18 +37,16 @@ class User extends SanctumPersonalAccessToken
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'usuarios';
+    protected $table = 'usuario';
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'idUsuario';
 }

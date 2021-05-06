@@ -35,8 +35,8 @@
                         </div>
                         @enderror
                         <div class="input-field mb-5">
-                            <input placeholder="Ingresa tu usuario o correo" id="email" type="email" name="email" class="validate" required>
-                            <label for="email">Usuario o correo</label>
+                            <input placeholder="Ingresa tu usuario o correo" id="email_or_username" type="text" name="email_or_username" class="validate" required>
+                            <label for="email_or_username">Usuario o correo</label>
                         </div>
 
                         @error('password')

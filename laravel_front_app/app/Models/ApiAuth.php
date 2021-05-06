@@ -10,15 +10,15 @@ class ApiAuth
      * Obtener token de la API con las credenciales
      * del usuario.
      *
-     * @param string  $request
+     * @param string  $email_or_username
      * @param string  $password
      * @param string  $device
      * @return token|null
      */
-    public static function getToken($email, $password, $device) {
+    public static function getToken($email_or_username, $password, $device) {
 
         $response = Http::post(env('API_URL').'tokens/create', [
-            'email' => $email,
+            'email_or_username' => $email_or_username,
             'password' => $password,
             'device_name' => $device
         ]);

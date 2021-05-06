@@ -21,16 +21,16 @@ class AuthController extends Controller
 
         // Validar parametros de la peticion
         $request->validate([
-            'email' => 'required|email',
+            'email_or_username' => 'required',
             'password' => 'required',
         ]);
 
         // Obtener token de la API
-        $email = $request->email;
+        $email_or_username = $request->email_or_username;
         $password = $request->password;
         $device = $request->header('User-Agent', 'default');
         
-        $token = ApiAuth::getToken($email, $password, $device);
+        $token = ApiAuth::getToken($email_or_username, $password, $device);
 
         if ($token == null) {
             return redirect()->route('login')
