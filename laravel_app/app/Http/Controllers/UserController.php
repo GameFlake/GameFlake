@@ -7,11 +7,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 // Importar modelos
-use App\Models\User;
+use App\Models\Usuario;
 
 class UserController extends Controller
 {
-
     /**
      * Registra un nuevo usuario
      *
@@ -37,23 +36,35 @@ class UserController extends Controller
         $birthday = $request->birthday;
         $user_name = $request->user_name;
 
-        // Verificar que exista el mismo nombre de usuario o correo
-        $user_by_email = User::where('email', $email)->first();
-        //$user_by_username = User::where('nombre_usuario', $email)->first();
-
-        if($user_by_email) {
+        // Verificar que no exista el correo
+        $userByEmail = Usuario::where('correo', $request->email)->first();
+        if($userByEmail) {
             $responseJson = [
-                'error' => 'El nombre de usuario ya esta ocupado.',
+                'error' => 'Ese correo ya esta ocupado.',
+                'codigo' => 409 
+            ];
+            return response()->json($responseJson, 409);
+        }
+
+        // Verificar que no exista el mismo nombre de usuario
+        $userByUsername = Usuario::where('username', $request->user_name)->first();
+        if($userByUsername) {
+            $responseJson = [
+                'error' => 'Ese nombre de usuario ya esta ocupado.',
                 'codigo' => 409 
             ];
             return response()->json($responseJson, 409);
         }
         
-        $new_user = new User;
-        $new_user->name = $first_name;
-        $new_user->email = $email;
-        $new_user->password = Hash::make($password);
-        $new_user->save();
+        // Registrar nuevos usuario
+        $newUser = new Usuario;
+        $newUser->nombre = $first_name;
+        $newUser->apellido = $last_name;
+        $newUser->correo = $email;
+        $newUser->password = Hash::make($password);
+        $newUser->telefono = "1234567901";
+        $newUser->username = $user_name;
+        $newUser->save();
 
         $responseJson = ['mensaje' => 'El usuario fue registrado exitosamente.'];
         return response()->json($responseJson, 200);

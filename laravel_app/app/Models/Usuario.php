@@ -49,4 +49,6 @@ class Usuario extends Authenticatable
      * @var string
      */
     protected $primaryKey = 'idUsuario';
+
+    public $timestamps = false;
 }

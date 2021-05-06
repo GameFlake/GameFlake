@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 // Importar modelos
-use App\Models\User;
 use App\Models\Usuario;
 
 class AuthController extends Controller

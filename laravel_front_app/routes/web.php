@@ -56,7 +56,10 @@ Route::get('/users/create', [UserController::class, 'create'])
 Route::post('/users', [UserController::class, 'store'])
     ->name('store_user');
 
-
+/*Route::post('/users', function () {
+    return response('Hello World', 200)
+                    ->header('Content-Type', 'text/plain');
+});*/
 /**
  * -------------------------
  *         TITULOS

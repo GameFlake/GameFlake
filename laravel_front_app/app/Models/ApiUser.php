@@ -18,7 +18,7 @@ class ApiUser
      * @return String an error message if there were any
      */
     public static function create($first_name, $last_name, $password, $email, $birthday, $user_name) {
-
+        
         $response = Http::post(env('API_URL').'users/store', [
             'first_name' => $first_name,
             'last_name' => $last_name,
