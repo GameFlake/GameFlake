@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 
 // Importar modelos
 use App\Models\Usuario;
@@ -20,23 +20,30 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Validar parametros de la peticion
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',
             'password' => 'required',
             'email' => 'required|email',
-            'birthday' => 'required|date|before:-13 years',
-            'user_name' => 'required|alpha_num'
+            'phone' => 'required|size:10',
+            'user_name' => 'required|alpha_num',
         ]);
+        if ($validator->fails()) {
+            $responseJson = [
+                'error' => 'Los parametros de la petición no son válidos.',
+                'codigo' => 422 
+            ];
+            return response()->json($responseJson, 422);
+        }
         
         $first_name = $request->first_name;
         $last_name = $request->last_name;
         $password = $request->password;
         $email = $request->email;
-        $birthday = $request->birthday;
+        $phone = $request->phone;
         $user_name = $request->user_name;
 
-        // Verificar que no exista el correo
+        // Verificar que no exista el mismo correo
         $userByEmail = Usuario::where('correo', $request->email)->first();
         if($userByEmail) {
             $responseJson = [
@@ -56,13 +63,13 @@ class UserController extends Controller
             return response()->json($responseJson, 409);
         }
         
-        // Registrar nuevos usuario
+        // Registrar nuevo usuario
         $newUser = new Usuario;
         $newUser->nombre = $first_name;
         $newUser->apellido = $last_name;
         $newUser->correo = $email;
         $newUser->password = Hash::make($password);
-        $newUser->telefono = "1234567901";
+        $newUser->telefono = $phone;
         $newUser->username = $user_name;
         $newUser->save();
 

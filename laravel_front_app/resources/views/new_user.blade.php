@@ -71,11 +71,11 @@
                             </div>
                             <div class="col s12 l6">
                                 <div class="input-field">
-                                    <input placeholder="Selecciona tu fecha de nacimiento" type="text" 
-                                            name="birthday" class="datepicker" value="{{ old('birthday') }}" required>
-                                    <label for="birthday">Fecha de nacimiento</label>
+                                    <input placeholder="Ingresa tu número de teléfono" id="phone" type="tel" pattern="[0-9]{10}"
+                                            name="phone" class="validate" value="{{ old('phone') }}" required>
+                                    <label for="phone">Teléfono</label>
                                 </div>
-                                @error('birthday')
+                                @error('phone')
                                 <div>
                                     <small class="red-text text-darken-1">{{ $message }}</small>
                                 </div>

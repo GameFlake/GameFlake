@@ -34,7 +34,7 @@ class UserController extends Controller
             'last_name' => 'required|alpha',
             'password' => 'required',
             'email' => 'required|email',
-            'birthday' => 'required|date|before:-13 years',
+            'phone' => 'required|size:10',
             'user_name' => 'required|alpha_num',
             'terms' => 'required',
         ]);
@@ -43,11 +43,11 @@ class UserController extends Controller
         $last_name = $request->last_name;
         $password = $request->password;
         $email = $request->email;
-        $birthday = $request->birthday;
+        $phone = $request->phone;
         $user_name = $request->user_name;
 
         // Registrar al usuario con la API
-        $message = ApiUser::create($first_name, $last_name, $password, $email, $birthday, $user_name);
+        $message = ApiUser::create($first_name, $last_name, $password, $email, $phone, $user_name);
         if ($message != "") {
             return redirect()->route('create_user')
                 ->with('error', $message);

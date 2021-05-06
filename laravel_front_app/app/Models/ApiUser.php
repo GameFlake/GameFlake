@@ -13,18 +13,18 @@ class ApiUser
      * @param string  $last_name
      * @param string  $password
      * @param string  $email
-     * @param string  $birthday
+     * @param string  $phone
      * @param string  $user_name
      * @return String an error message if there were any
      */
-    public static function create($first_name, $last_name, $password, $email, $birthday, $user_name) {
+    public static function create($first_name, $last_name, $password, $email, $phone, $user_name) {
         
         $response = Http::post(env('API_URL').'users/store', [
             'first_name' => $first_name,
             'last_name' => $last_name,
             'password' => $password,
             'email' => $email,
-            'birthday' => $birthday,
+            'phone' => $phone,
             'user_name' => $user_name
         ]);
         
