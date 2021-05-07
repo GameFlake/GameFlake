@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Importar controladores
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 
 Route::view('/', 'home')
@@ -41,6 +42,37 @@ Route::get('/logout', [AuthController::class, 'logout'])
     ->name('logout')
     ->middleware('auth');
 
+/**
+ * -------------------------
+ *         USUARIOS
+ * -------------------------
+ */
+
+// Mostrar vista para registrar nuevo usuario
+Route::get('/users/create', [UserController::class, 'create'])
+    ->name('create_user');
+
+// Registrar nuevo usuario
+Route::post('/users', [UserController::class, 'store'])
+    ->name('store_user');
+
+/*Route::post('/users', function () {
+    return response('Hello World', 200)
+                    ->header('Content-Type', 'text/plain');
+});*/
+/**
+ * -------------------------
+ *         TITULOS
+ * -------------------------
+ */
+
+ 
+ /**
+ * -------------------------
+ *         OFERTAS
+ * -------------------------
+ */
+
 
 /*
 use App\Http\Controllers\APIController;
@@ -60,6 +92,13 @@ Route::get('/ofertas', Oferta::class, 'listOferta');
 use App\Http\Controllers\Oferta;
 Route:: resource('/oferta',Oferta::class );
 */
+
+/**
+ * -------------------------
+ *           OTROS
+ * -------------------------
+ */
+
 // Ruta a la pagina simple
 Route::view('team', "team");
 

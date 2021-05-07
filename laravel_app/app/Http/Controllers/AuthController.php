@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+
+// Importar modelos
+use App\Models\Usuario;
 
 class AuthController extends Controller
 {
@@ -17,22 +19,41 @@ class AuthController extends Controller
      */
     public function createToken(Request $request) {
         
-        // Validar parametros POST de la peticion
-        $request->validate([
-            'email' => 'required|email',
+        // Validar parametros de la peticion
+        $validator = Validator::make($request->all(), [
+            'email_or_username' => 'required',
             'password' => 'required',
             'device_name' => 'required',
         ]);
-        
-        // Verificar credenciales de usuario
-        $user = User::where('email', $request->email)->first();
+        if ($validator->fails()) {
+            $responseJson = [
+                'error' => 'Los parametros de la petición no son válidos.',
+                'codigo' => 422 
+            ];
+            return response()->json($responseJson, 422);
+        }
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        $userByEmail = Usuario::where('correo', $request->email_or_username)->first();
+        $userByUsername = Usuario::where('username', $request->email_or_username)->first();
+
+        // Verificar que exista un usuario con este correo o este nombre de usuario
+        if (!$userByEmail && !$userByUsername) {
             $responseJson = [
                 'error' => 'Credenciales incorrectas.',
-                'codigo' => 400
+                'codigo' => 401 
             ];
-            return response()->json($responseJson, 400);
+            return response()->json($responseJson, 401);
+        }
+        
+        $user = ($userByEmail) ? $userByEmail : $userByUsername;
+
+        // Verificar que esta contraseña coincida
+        if(!Hash::check($request->password, $user->password)) {
+            $responseJson = [
+                'error' => 'Credenciales incorrectas.',
+                'codigo' => 401 
+            ];
+            return response()->json($responseJson, 401);
         }
         
         // Crear y devolver token
