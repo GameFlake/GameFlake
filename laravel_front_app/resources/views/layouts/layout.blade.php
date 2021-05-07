@@ -33,7 +33,7 @@
             <li><a href="#">Inicio</a></li>
             <li><a href="/catalogo">Catálogo</a></li>
             <li><a href="#">Mis juegos</a></li>
-            <li><a href="#">Mis ofertas</a></li>
+            <li><a href="/ofertas">Mis ofertas</a></li>
             <li><a href="#">Mis coincidencias</a></li>
             <li><a href="#">Mi perfil</a></li>
             <a class= "blue accent-4 btn">Cerrar sesión</a>
@@ -74,9 +74,9 @@
                 <h5 class="white-text">Información</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Catálogo</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/catalogo">Catálogo</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis juego</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Mis ofertas</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/ofertas">Mis ofertas</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis coincidencias</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mi perfil</a></li>
                 </ul>
