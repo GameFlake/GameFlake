@@ -15,6 +15,7 @@
 @section('mainContent')
 <div class="container">
 
+    @if (count($ofertaquery)!=0)  
       <table  class="responsive-table" >
 
         <thead class="grey darken-4 ">
@@ -27,8 +28,10 @@
           </tr>
         </thead>
 
+       
         <tbody class="indigo darken-4 white-text">
         @foreach ($ofertaquery as $oferta)
+        
             <tr>
               <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
@@ -47,10 +50,28 @@
               
             </tr>
         @endforeach
-
+       
           
         </tbody>
+       
+        
+                       
       </table>
+      @else
+       
+      <div class="col s12 m7">
+        <div class="card horizontal  blue lighten-2">
+          <div class="card-stacked">
+            <div class="card-content center-align">
+              <h3>No hay ofertas disponibles por el momento</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+            
+       @endif
+     
       <br>
       <br>
       <br>
@@ -62,6 +83,7 @@
 
   <br>
   <br>
+  @if (count($misofertas)!=0)  
   <table  class="responsive-table" >
 
         <thead class="grey darken-4 ">
@@ -86,6 +108,21 @@
           
         </tbody>
       </table>
+      @else
+       
+      <div class="col s12 m7">
+        <div class="card horizontal  blue lighten-2">
+          <div class="card-stacked">
+            <div class="card-content center-align">
+              <h3>No hay ofertas disponibles por el momento</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+            
+       
+            
+       @endif
 
 
       <br>

@@ -15,6 +15,7 @@
 @section('mainContent')
 
 <div class="container">
+@if (count($titulosquery)!=0)  
   <div class="row">
     @foreach($titulosquery as $titulo)
     <div class="col s4">
@@ -30,6 +31,25 @@
     </div>
     @endforeach
   </div>
+  @else
+       
+       <div class="col s12 m7">
+         <div class="card horizontal  blue lighten-2">
+           <div class="card-stacked">
+             <div class="card-content center-align">
+               <h3>¡No hay títulos registrados en el catálogo!</h3>
+             </div>
+           </div>
+         </div>
+       </div>
+       <br>
+       <br>
+       <br>
+       <br>
+        
+             
+        @endif 
 </div>
+
       
 @endsection
