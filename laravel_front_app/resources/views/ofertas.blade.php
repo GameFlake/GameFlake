@@ -40,13 +40,16 @@
                 <a href="#"><i class="material-icons medium green-text">check</i></a>
                 <a href="#"><i class="material-icons medium red-text">close</i></a>  
               </td>
-              <td class="center-align"><a
-              @if ($oferta["estado"] === 'Pendiente')
-              class="yellow darken-2 btn"
-              @else
-              class="green accent-4  btn"
-              @endif
-              >{{ $oferta["estado"] }}</a></td>
+              <td class="center-align">
+                <a href="javascript:void(0)"
+                @if ($oferta["estado"] === 'Pendiente')
+                class="yellow darken-2 btn"
+                @else
+                class="green accent-4  btn"
+                @endif
+                >{{ $oferta["estado"] }}</a></td>
+              </form>
+              
               
             </tr>
         @endforeach
@@ -92,16 +95,53 @@
               <th class="center-align">Por</th>
               <th class="center-align">De</th>
               <th class="center-align">Eliminar</th>
+              <th class="center-align">Estado</th>
           </tr>
         </thead>
 
         <tbody class="indigo darken-4 white-text">
         @foreach ($misofertas as $ofertas)
-            <tr>
+            <tr >
               <td class="center-align">{{ $ofertas["TR"] }}</td>
               <td class="center-align">{{ $ofertas["TO"] }}</td>
               <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
-              <td class="center-align"><a href="#"><i class="material-icons medium red-text">close</i></a> </td>
+              <td class="center-align">
+              <form action="{{ url('/ofertas/'.$ofertas["idOferta"]) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <a class=btn><i class="material-icons medium red-text">close</i></a> 
+                 <!-- Modal desaprobados-->
+                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de eliminar?</h5>
+                            <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                      
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn button-donar">Eliminar</button>
+
+                   
+              </form>
+              </td>
+                                  
+              
+              
+              
+              
+              
+              
+              <td class="center-align"><a 
+              @if ($ofertas["estado"] === 'Pendiente')
+              class="yellow darken-2 btn"
+              @else
+              class="green accent-4  btn"
+              @endif
+              >{{ $ofertas["estado"] }}</a></td>
             </tr>
         @endforeach
 
@@ -137,3 +177,4 @@
 
       
 @endsection
+

@@ -16,4 +16,13 @@ class OfertaQueryController extends Controller
         $misofertasquery=MisOfertasQuery:: getMisOfertas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
+    /*
+    public function delete( Request $request){
+        print_R($request->input());
+    } 
+    */
+    public function destroy ($ofertas){
+        $ofertas->delete();
+        return view("ofertas");
+    }
 }

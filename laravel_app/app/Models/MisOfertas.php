@@ -14,7 +14,7 @@ class MisOfertas extends Model
     //Get de todas las ofertas que he hecho por los juegos que tengo 
     public static function getAllMisOfertas(){
         $oferta= DB::table('juego')
-        ->select('juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
+        ->select('oferta.idOferta as idOferta', 'juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
         ->where('juego.idUsuario','=', '1')
         ->join('oferta', 'oferta.idJuegoOfertante', '=', 'juego.idJuego')
         ->join('titulo as TR', 'juego.idTitulo', '=', 'TR.idTitulo')

@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 
 use App\Http\Controllers\TituloController;
