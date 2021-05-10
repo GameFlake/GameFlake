@@ -112,9 +112,7 @@
               <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post">
                 @csrf
                 {{ method_field('DELETE')}}
-                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar') ;">Eliminar</button>
-                
-
+                <a type="submit" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></a>
                 <!---
                 <a type="submit"  class="waves-effect waves-light btn modal-trigger" href="#modal1">Delete</a>
                 <div id="modal1" class="modal">
