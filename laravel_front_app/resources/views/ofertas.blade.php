@@ -105,25 +105,34 @@
               <td class="center-align">{{ $ofertas["TR"] }}</td>
               <td class="center-align">{{ $ofertas["TO"] }}</td>
               <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
+              <!-- <td class="center-align">{{ $ofertas["id"]}}</td> 
+               <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar') ;">Eliminar</button>
+              -->
               <td class="center-align">
-              <form action="{{ url('/ofertas/'.$ofertas["idOferta"]) }}" method="post">
+              <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post">
                 @csrf
-                @method('DELETE')
-                <a class=btn><i class="material-icons medium red-text">close</i></a> 
-                 <!-- Modal desaprobados-->
-                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de eliminar?</h5>
-                            <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                      
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn button-donar">Eliminar</button>
+                {{ method_field('DELETE')}}
+                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Quieres borrar') ;">Eliminar</button>
+                
+
+                <!---
+                <a type="submit"  class="waves-effect waves-light btn modal-trigger" href="#modal1">Delete</a>
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <p class='text-black'>Are you sure to delete this row?</p>
+                  </div>
+                  <div class="modal-footer">
+                          <a class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
+                          <a class="modal-action modal-close waves-effect waves-green btn-flat " >Yes</a>
+                </div>
+                </div>
+
+                <script>
+                      $(document).ready(function(){
+                      $('#modal1').modal();
+                      });
+              </script>
+              -->
 
                    
               </form>
