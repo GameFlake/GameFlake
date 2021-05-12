@@ -41,7 +41,7 @@
                 <a href="#"><i class="material-icons medium red-text">close</i></a>  
               </td>
               <td class="center-align">
-                <a href="javascript:void(0)"
+                <a href="{{ url('/misofertas/edit/'.$oferta['id']) }}"
                 @if ($oferta["estado"] === 'Pendiente')
                 class="yellow darken-2 btn"
                 @else
@@ -112,27 +112,7 @@
               <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post">
                 @csrf
                 {{ method_field('DELETE')}}
-                <a type="submit" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></a>
-                <!---
-                <a type="submit"  class="waves-effect waves-light btn modal-trigger" href="#modal1">Delete</a>
-                <div id="modal1" class="modal">
-                  <div class="modal-content">
-                    <p class='text-black'>Are you sure to delete this row?</p>
-                  </div>
-                  <div class="modal-footer">
-                          <a class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
-                          <a class="modal-action modal-close waves-effect waves-green btn-flat " >Yes</a>
-                </div>
-                </div>
-
-                <script>
-                      $(document).ready(function(){
-                      $('#modal1').modal();
-                      });
-              </script>
-              -->
-
-                   
+                <button type="submit" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
               </form>
               </td>
                                   
@@ -180,7 +160,19 @@
       <br>
 </div>
 
-
+<!--Edit modal-->
+  <!-- Modal Structure -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <p>¿Estas seguro de editar?</p>
+      <form>
+      <input type="hidden" value='Aprobado'></input>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
       
 @endsection
