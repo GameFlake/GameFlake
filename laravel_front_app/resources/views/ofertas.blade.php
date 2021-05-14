@@ -2,7 +2,9 @@
 
 @section('pageTitle', "GameFlake")
 
-
+@if (Session::has('eliminado'))
+    <div class="alert alert-success" role="alert"> {{Session::get('eliminado')}} </div>      
+@endif
 
 @section('header')
   <div class="container">
@@ -98,7 +100,7 @@
           <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post">
             @csrf
             {{ method_field('DELETE')}}
-            <button type="submit" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
+            <button type="submit" value="delete" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
           </form>
           </td>
                             
