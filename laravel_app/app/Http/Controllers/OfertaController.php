@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Oferta;
+use App\Models\Ofertas;
 
 class OfertaController extends Controller
 {
@@ -81,7 +82,6 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
-        Oferta::destroy($id);
-        return redirect("ofertas");
+        
     }
 }

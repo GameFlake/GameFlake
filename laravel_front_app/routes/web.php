@@ -20,8 +20,8 @@ Route::get('/', function () {
 Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 use App\Http\Controllers\OfertaDeleteController;
 //Route::get('/misofertas/{id}', [OfertaDeleteController::class, 'destroy']);
-Route::resource('/misofertas', OfertaDeleteController::class);
-//Route::resource('/misofertas/edit/{id}', [OfertaDeleteController::class,'edit']);
+Route::resource('misofertas', OfertaDeleteController::class);
+//Route::get('/misofertas/edit/{id}', [OfertaDeleteController::class,'edit']);
 
 use App\Http\Controllers\TituloController;
 

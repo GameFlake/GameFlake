@@ -22,11 +22,16 @@ use App\Http\Controllers\OfertaController;
 
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("ofertas", OfertaController::class);
-//Route::roue("ofertasdelete/delete", [OfertaController::class,'destroy']);
+//Route::apiResource("ofertas.destroy", [OfertaController::class,'destroy']);
+
 
 use App\Http\Controllers\MisOfertasController;
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("misofertas", MisOfertasController::class);
+//Route::apiget("misofertas/{id}", [MisOfertasController::class,'destroy']);
+Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
+
+
 
 use App\Http\Controllers\TituloController;
 

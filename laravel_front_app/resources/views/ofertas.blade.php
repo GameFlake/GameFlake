@@ -101,8 +101,7 @@
             <button type="submit" class="btn btn-link" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
           </form>
           </td>
-                              
-
+                            
           <td class="center-align"><a 
           @if ($ofertas["estado"] === 'Pendiente')
           class="yellow darken-2 btn"

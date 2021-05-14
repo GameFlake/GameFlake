@@ -14,9 +14,7 @@ class Oferta extends Model
     use HasFactory;
 
     public $table= "oferta";
-    /*
-    protected $primaryKey = 'idOferta';
-    */
+    protected $primaryKey='idOferta';
 
     //Get de todas las ofertas que me han hecho por mis juegos 
     public static function getAllOfertas(){

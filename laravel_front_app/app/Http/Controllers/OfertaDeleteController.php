@@ -81,7 +81,8 @@ class OfertaDeleteController extends Controller
      */
     public function destroy($id)
     {
-        $ofertaquery= Oferta:: getOferta($id);
+
+        $ofertaquery= Oferta::getOferta($id);
         return  $ofertaquery;
         /*
         Oferta::destroy($id);

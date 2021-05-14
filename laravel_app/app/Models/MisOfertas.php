@@ -11,6 +11,9 @@ class MisOfertas extends Model
     use HasFactory;
 
 
+    public $table= "oferta";
+    protected $primaryKey='idOferta';
+    
     //Get de todas las ofertas que he hecho por los juegos que tengo 
     public static function getAllMisOfertas(){
         $oferta= DB::table('juego')

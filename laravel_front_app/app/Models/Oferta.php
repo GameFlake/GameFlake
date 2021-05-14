@@ -15,11 +15,12 @@ class Oferta extends Model
     use HasFactory;
 
     public static function getOferta($id) {
-        $response = Http::post(env('API_URL').'oferta/delete', [
-            'id' => $id
+        $response = Http::post(env('API_URL').'misofertas/{$id}', [
+            'idOferta' => $id
         ]);
 
         if($response->status() == 200) {
+            var_dump("yes yes");
             return (true);
         }
         return null;
