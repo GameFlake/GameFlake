@@ -20,9 +20,10 @@ class OfertaQueryController extends Controller
     public function delete( Request $request){
         print_R($request->input());
     } 
-    */
+    
     public function destroy ($id){
         OfertaQuery::destroy($id);
         return redirect('ofertas');
     }
+    */
 }

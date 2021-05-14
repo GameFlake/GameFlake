@@ -81,6 +81,7 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Oferta::destroy($id);
+        return redirect("ofertas");
     }
 }

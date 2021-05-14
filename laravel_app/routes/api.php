@@ -22,7 +22,7 @@ use App\Http\Controllers\OfertaController;
 
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("ofertas", OfertaController::class);
-
+//Route::roue("ofertasdelete/delete", [OfertaController::class,'destroy']);
 
 use App\Http\Controllers\MisOfertasController;
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
