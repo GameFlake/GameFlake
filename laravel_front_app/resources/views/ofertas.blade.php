@@ -40,7 +40,7 @@
           </tr>
         </thead>
 
-
+        
         <tbody class="indigo darken-4 white-text">
         @foreach ($ofertaquery as $oferta)
 
@@ -49,11 +49,17 @@
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
               <td class="center-align">
-                <a href="#"><i class="material-icons medium green-text">check</i></a>
+              <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
+                @csrf 
+                {{ method_field('PATCH')}}
+                <input id="prodId" name="prodId" type="hidden" <?php if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado"<?php }else { ?>value ='Pendiente"<?php } ?>  >
+                <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium green-text">check</i></button>
+              </form>
+
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}
-                  <button type="submit" value="delete" class="btn btn-link" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
+                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text fa-9x">close</i></button>
                 </form>
               </td>
               <td class="center-align"><a 
@@ -126,10 +132,9 @@
             <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
               @csrf
               {{ method_field('DELETE')}}
-            <button type="submit" value="delete" class="btn btn-link" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text">close</i></button>
+            <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons  red-text">close</i> </button>
             </form>
-            </td>
-                              
+            </td>               
             <td class="center-align"><a 
             @if ($ofertas["estado"] === 'Pendiente')
             class="yellow darken-2 btn"
