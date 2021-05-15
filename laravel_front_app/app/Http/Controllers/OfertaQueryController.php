@@ -47,7 +47,7 @@ class OfertaQueryController extends Controller
         var_dump($ofertaquery);
         
         if($ofertaquery != NULL){
-            return  redirect('ofertas')->with('eliminate','Oferta editada con éxito');
+            return  redirect('ofertas')->with('update','Oferta editada con éxito');
         }
     }
 }
