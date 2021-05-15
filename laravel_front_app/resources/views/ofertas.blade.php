@@ -35,7 +35,8 @@
               <th class="center-align">Nombre</th>
               <th class="center-align">Quiere cambiar </th>
               <th class="center-align">Por tu</th>
-              <th class="center-align">Aceptar / Rechazar </th>
+              <th class="center-align">Aceptar </th>
+              <th class="center-align">Rechazar </th>
               <th class="center-align">Estado</th>
           </tr>
         </thead>
@@ -45,16 +46,22 @@
         @foreach ($ofertaquery as $oferta)
 
             <tr>
+
               <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
               <td class="center-align">
-              <form action="{{ url('/ofertas/update/'.$oferta['id']) }}" method="post" >
-                @csrf 
-                {{ method_field('PATCH')}}
-                <input id="estado" name="estado" type="hidden" <?php if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado"<?php }else { ?>value ='Pendiente"<?php } ?>  >
-                <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium green-text">check</i></button>
+              <form action="{{ url('/ofertas/update') }}" method="post" >
+              @csrf
+                {{ method_field('POST') }}
+                <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
+                <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php }else { ?>value ='Pendiente' <?php } ?>  >
+                <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium green-text">check</i></button>
               </form>
+              
+              </td>
+              <td class="center-align">
+             
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}

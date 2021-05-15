@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
-Route::delete('/ofertas/update/{id}', 'App\Http\Controllers\OfertaQueryController@update');
+Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
 
 use App\Http\Controllers\OfertaDeleteController;
 //Route::get('/misofertas/{id}', [OfertaDeleteController::class, 'destroy']);
