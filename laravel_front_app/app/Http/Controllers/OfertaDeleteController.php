@@ -68,9 +68,9 @@ class OfertaDeleteController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oferta $ofertaDelete)
+    public function update(Request $request, Oferta $ofertaDelete, $id)
     {
-        //
+        
     }
 
     /**

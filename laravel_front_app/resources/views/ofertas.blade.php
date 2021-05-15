@@ -49,13 +49,12 @@
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
               <td class="center-align">
-              <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
+              <form action="{{ url('/ofertas/update/'.$oferta['id']) }}" method="post" >
                 @csrf 
                 {{ method_field('PATCH')}}
-                <input id="prodId" name="prodId" type="hidden" <?php if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado"<?php }else { ?>value ='Pendiente"<?php } ?>  >
+                <input id="estado" name="estado" type="hidden" <?php if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado"<?php }else { ?>value ='Pendiente"<?php } ?>  >
                 <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium green-text">check</i></button>
               </form>
-
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}

@@ -32,4 +32,22 @@ class OfertaQueryController extends Controller
         return redirect("ofertas");
         */
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\OfertaDelete  $ofertaDelete
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $ofertaquery= OfertaQuery::getOfertabyid($id);
+
+        var_dump($ofertaquery);
+        
+        if($ofertaquery != NULL){
+            return  redirect('ofertas')->with('eliminate','Oferta editada con éxito');
+        }
+    }
 }

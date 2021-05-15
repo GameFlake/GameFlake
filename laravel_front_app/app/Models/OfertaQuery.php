@@ -19,7 +19,7 @@ class OfertaQuery extends Model
         return ($response->json());
     }
     public static function getOfertabyid($id) {
-        $response = Http::delete(env('API_URL').'/misofertas/'.$id);
+        $response = Http::delete(env('API_URL').'/ofertas/'.$id);
         
         //$response->throw();
         //var_dump($id);
@@ -27,7 +27,17 @@ class OfertaQuery extends Model
             //var_dump("yes yes");
             return (true);
         }
-        return "holi";
+        return null;
+    }
+    public static function updateOfertabyid($id, $estado) {
+        $response = Http::patch(env('API_URL').'/ofertas/update/'.$id,[
+            'estado' => $estado
+        ]);
+        if($response->status() == 200) {
+            //var_dump("yes yes");
+            return (true);
+        }
+        return null;
     }
 
 }
