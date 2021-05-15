@@ -87,7 +87,7 @@ class OfertaDeleteController extends Controller
         var_dump($ofertaquery);
         
         if($ofertaquery != NULL){
-            return  redirect('ofertas')->with('eliminado','Oferta borrada con éxito');
+            return  redirect('ofertas')->with('message','Oferta borrada con éxito');
         }
         
         /*

@@ -16,14 +16,20 @@ class OfertaQueryController extends Controller
         $misofertasquery=MisOfertasQuery:: getMisOfertas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
-    /*
-    public function delete( Request $request){
-        print_R($request->input());
-    } 
-    
-    public function destroy ($id){
-        OfertaQuery::destroy($id);
-        return redirect('ofertas');
+    public function destroy($id)
+    {
+
+        $ofertaquery= OfertaQuery::getOfertabyid($id);
+
+        var_dump($ofertaquery);
+        
+        if($ofertaquery != NULL){
+            return  redirect('ofertas')->with('eliminate','Oferta borrada con éxito');
+        }
+        
+        /*
+        Oferta::destroy($id);
+        return redirect("ofertas");
+        */
     }
-    */
 }

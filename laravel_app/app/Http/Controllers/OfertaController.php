@@ -82,6 +82,11 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
+        $ofertas = Oferta::find($id);
         
+        $success = $ofertas->delete();
+
+        //Oferta::destroy($id);
+        return 0 ;
     }
 }
