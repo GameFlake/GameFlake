@@ -29,9 +29,10 @@ class OfertaQuery extends Model
         }
         return null;
     }
-    public static function updateOfertabyid($id, $estado) {
-        $response = Http::patch(env('API_URL').'/ofertas/update/'.$id,[
-            'estado' => $estado
+    public static function updateOferta($request) {
+        $response = Http::put(env('API_URL').'/ofertas/update',[
+            'idOferta' => $request->idOferta,
+            'estado' => $request->estado,
         ]);
         if($response->status() == 200) {
             //var_dump("yes yes");

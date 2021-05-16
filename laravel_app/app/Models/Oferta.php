@@ -15,6 +15,7 @@ class Oferta extends Model
 
     public $table= "oferta";
     protected $primaryKey='idOferta';
+    public $timestamps = false;
 
     //Get de todas las ofertas que me han hecho por mis juegos 
     public static function getAllOfertas(){

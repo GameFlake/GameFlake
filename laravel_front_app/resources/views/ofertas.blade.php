@@ -13,6 +13,15 @@
 
 @section('mainContent')
 
+@if(Session::has('update'))
+    <script>
+     Swal.fire(
+              '¡Aceptado!',
+              'La oferta fue aceptada.',
+              'success'
+            )
+    </script>
+    @endif
 
 
 @if(Session::has('eliminate'))
@@ -46,20 +55,28 @@
         @foreach ($ofertaquery as $oferta)
 
             <tr>
-
               <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
-              <td class="center-align">
-              <form action="{{ url('/ofertas/update') }}" method="post" >
-              @csrf
-                {{ method_field('POST') }}
-                <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
-                <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php }else { ?>value ='Pendiente' <?php } ?>  >
-                <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium green-text">check</i></button>
-              </form>
-              
-              </td>
+              @if($oferta["estado"] === 'Pendiente')
+                <td class="center-align">
+                <form action="{{ url('/ofertas/update') }}" method="post" >
+                @csrf
+                  {{ method_field('POST') }}
+                  <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
+                  <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php } ?>  >
+                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium green-text">check</i></button>
+                </form>
+                </td>
+              @else
+                <td class="center-align">
+                <form>
+                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" disabled><i class="material-icons medium gray-text">check</i></button>
+                </form>
+                </td>
+              @endif
+
+
               <td class="center-align">
              
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >

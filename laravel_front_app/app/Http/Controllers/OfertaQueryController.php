@@ -42,15 +42,15 @@ class OfertaQueryController extends Controller
      */
     public function update(Request $request)
     { 
-        return $request;
-        /*
-        $ofertaquery= OfertaQuery::getOfertabyid($id);
+       // return $request;
+        
+        $ofertaquery= OfertaQuery::updateOferta($request);
 
         var_dump($ofertaquery);
         
         if($ofertaquery != NULL){
             return  redirect('ofertas')->with('update','Oferta editada con éxito');
         }
-        */
+        
     }
 }

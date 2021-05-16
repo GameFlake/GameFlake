@@ -87,7 +87,6 @@ class MisOfertasController extends Controller
         
         $success = $ofertas->delete();
 
-        //Oferta::destroy($id);
-        return 0 ;
+        return $success ;
     }
 }

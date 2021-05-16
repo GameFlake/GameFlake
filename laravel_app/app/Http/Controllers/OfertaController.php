@@ -69,10 +69,14 @@ class OfertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oferta $oferta, $id)
+    public function update(Request $request)
     {
-        $oferta->estado = $request('estado');
-        $oferta -> save(); 
+        
+        
+        $oferta = Oferta::find($request->idOferta);
+        $oferta->estado = $request->estado;
+        $result= $oferta-> save();
+        return $result;
     }
 
     /**
@@ -88,6 +92,6 @@ class OfertaController extends Controller
         $success = $ofertas->delete();
 
         //Oferta::destroy($id);
-        return 0 ;
+        return $success ;
     }
 }

@@ -26,7 +26,7 @@ Route::apiResource("ofertas", OfertaController::class);
 //Route::apiget("misofertas/{id}", [MisOfertasController::class,'destroy']);
 Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
 
-Route::post('/ofertas/update/{id}', ['as' => 'patch', 'uses' => 'App\Http\ControllersOfertaController@update']);
+Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
 
 use App\Http\Controllers\MisOfertasController;
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
