@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\MisOfertas;
+use App\Models\Oferta;
+use App\Models\Ofertas;
+
 
 class MisOfertasController extends Controller
 {
@@ -80,6 +83,10 @@ class MisOfertasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ofertas = MisOfertas::find($id);
+        
+        $success = $ofertas->delete();
+
+        return $success ;
     }
 }

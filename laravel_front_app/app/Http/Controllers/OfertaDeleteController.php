@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OfertaDelete;
+use App\Models\Oferta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class OfertaDeleteController extends Controller
 {
@@ -44,7 +45,7 @@ class OfertaDeleteController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function show(OfertaDelete $ofertaDelete)
+    public function show(Oferta $ofertaDelete)
     {
         //
     }
@@ -55,9 +56,9 @@ class OfertaDeleteController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function edit(OfertaDelete $ofertaDelete)
+    public function edit($id)
     {
-        //
+        return Oferta::find($id);
     }
 
     /**
@@ -67,20 +68,31 @@ class OfertaDeleteController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OfertaDelete $ofertaDelete)
+    public function update(Request $request, Oferta $ofertaDelete)
     {
-        //
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OfertaDelete  $ofertaDelete
+     * @param  \App\Models\Oferta  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        OfertaDelete::destroy($id);
+
+        $ofertaquery= Oferta::getOferta($id);
+
+        var_dump($ofertaquery);
+        
+        if($ofertaquery != NULL){
+            return  redirect('ofertas')->with('message','Oferta borrada con éxito');
+        }
+        
+        /*
+        Oferta::destroy($id);
         return redirect("ofertas");
+        */
     }
 }

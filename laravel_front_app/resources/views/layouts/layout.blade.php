@@ -15,6 +15,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!--Custom CSS-->
       <link rel="stylesheet" href="{{ url('css/styles.css')}}">
+      <!-----Sweetalert--->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

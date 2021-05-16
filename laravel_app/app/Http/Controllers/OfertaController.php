@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Oferta;
+use App\Models\Ofertas;
 
 class OfertaController extends Controller
 {
@@ -68,9 +69,14 @@ class OfertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
+        
+        $oferta = Oferta::find($request->idOferta);
+        $oferta->estado = $request->estado;
+        $result= $oferta-> save();
+        return $result;
     }
 
     /**
@@ -81,6 +87,11 @@ class OfertaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ofertas = Oferta::find($id);
+        
+        $success = $ofertas->delete();
+
+        //Oferta::destroy($id);
+        return $success ;
     }
 }

@@ -14,11 +14,13 @@ class Oferta extends Model
     use HasFactory;
 
     public $table= "oferta";
+    protected $primaryKey='idOferta';
+    public $timestamps = false;
 
     //Get de todas las ofertas que me han hecho por mis juegos 
     public static function getAllOfertas(){
         $oferta= DB::table('juego')
-        ->select('oferta.idOferta as idOferta', 'juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
+        ->select('oferta.idOferta as id', 'juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
         ->where('juego.idUsuario','=', '1')
         ->join('oferta', 'oferta.idJuegoRecipiente', '=', 'juego.idJuego')
         ->join('titulo as TR', 'juego.idTitulo', '=', 'TR.idTitulo')
