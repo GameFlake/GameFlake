@@ -1,3 +1,24 @@
+<?php
+if ( isset($_POST['submit']) ) {
+    $data = array(
+        'secret' => "0xBe5d564C39b35176Fac92f44A1b22fa949d969B4",
+        'response' => $_POST['h-captcha-response']
+    );
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    $responseData = json_decode($response);
+    if($responseData->success) {
+        echo 'form is safe to succeed';
+    } else {
+        echo 'Robot verification failed, please try again.';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +69,8 @@
                             <input placeholder="Ingresa tu contraseña" id="password" type="password" name="password" class="validate" required>
                             <label for="password">Contraseña</label>
                         </div>
+
+                        <div class="h-captcha" data-sitekey="d5945e9b-1bcc-4cc5-80bd-6df8d5baef0b" ></div>
                                 
                         <div class="flex-row justify-content-center mb-4">
                             <button class="deep-purple accent-2 btn waves-effect waves-light" type="submit" name="action">Iniciar sesión</button>
@@ -61,5 +84,11 @@
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--- Hcapcha-->
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    
+
+
+
 </body>
 </html>
