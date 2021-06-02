@@ -70,7 +70,7 @@ if ( isset($_POST['submit']) ) {
                             <label for="password">Contraseña</label>
                         </div>
 
-                        <div class="h-captcha" data-sitekey="d5945e9b-1bcc-4cc5-80bd-6df8d5baef0b" ></div>
+                        <div class="h-captcha" data-sitekey="d5945e9b-1bcc-4cc5-80bd-6df8d5baef0b" ></div> 
                                 
                         <div class="flex-row justify-content-center mb-4">
                             <button class="deep-purple accent-2 btn waves-effect waves-light" type="submit" name="action">Iniciar sesión</button>

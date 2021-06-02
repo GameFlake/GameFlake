@@ -51,6 +51,15 @@ class UsuarioSeeder extends Seeder
                 "password" => Hash::make("pass"),
                 "telefono" => "4423459806",
                 "username" => "julian",
+            ],
+            [
+                "idUsuario" => 5,
+                "nombre" => "Test",
+                "apellido" => "Test",
+                "correo" => "test@test.com",
+                "password" => "pass",
+                "telefono" => "4423459806",
+                "username" => "test",
             ]
         ]);
     }
