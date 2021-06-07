@@ -56,9 +56,13 @@ class AuthController extends Controller
             return response()->json($responseJson, 401);
         }
         
-        // Crear y devolver token
-        $token = $user->createToken($request->device_name);
-        $responseJson = ['token' => $token->plainTextToken];
+        // Crear token con permisos y devolver token y permisos
+        $permissions = array_values($user->getPermissions());
+        $token = $user->createToken($request->device_name, $permissions);
+        $responseJson = [
+            'token' => $token->plainTextToken,
+            'permisos' => $permissions
+        ];
         return response()->json($responseJson, 200);
     }
 
@@ -86,5 +90,5 @@ class AuthController extends Controller
             'codigo' => 401
         ];
         return response()->json($responseJson, 401);
-    }   
+    }
 }

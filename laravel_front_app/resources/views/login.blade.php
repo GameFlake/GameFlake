@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="{{ asset('/css/utilities.css') }}" />
-
+    <link rel="icon" href="{{ asset('/img/logo_paredmart.svg') }}">
     <title>Login</title>
 </head>
 <body class="deep-purple">
