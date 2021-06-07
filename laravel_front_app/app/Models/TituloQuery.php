@@ -12,7 +12,7 @@ class TituloQuery extends Model
 
     public static function getTitulos() {
 
-        $response = Http::get(env('API_URL').'/titulos');
+        $response = Http::get(env('API_URL').'titulos');
         return ($response->json());
 
     }

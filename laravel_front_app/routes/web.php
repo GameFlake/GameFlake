@@ -16,14 +16,9 @@ use Illuminate\Support\Facades\Route;
 // Importar controladores
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TituloQueryController;
+use App\Http\Controllers\OfertaQueryController;
 
-
-Route::view('/', 'home')
-    ->name('home')
-    ->middleware('auth');
-
-Route::view('/coming_soon', 'coming_soon')
-    ->name('coming_soon');
 
 /**
  * -------------------------
@@ -56,16 +51,15 @@ Route::get('/users/create', [UserController::class, 'create'])
 Route::post('/users', [UserController::class, 'store'])
     ->name('store_user');
 
-/*Route::post('/users', function () {
-    return response('Hello World', 200)
-                    ->header('Content-Type', 'text/plain');
-});*/
 /**
  * -------------------------
  *         TITULOS
  * -------------------------
  */
 
+Route::get('/catalogo', [TituloQueryController::class, 'index'])
+    ->name('catalogo')
+    ->middleware(['auth', 'can:consultarTitulo']);
  
  /**
  * -------------------------
@@ -73,8 +67,10 @@ Route::post('/users', [UserController::class, 'store'])
  * -------------------------
  */
 
+Route::get('/ofertas', [OfertaQueryController::class, 'index'])
+    ->name('ofertas')
+    ->middleware(['auth', 'can:consultarOferta']);
 
-Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
 Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
 Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
 
@@ -83,11 +79,18 @@ use App\Http\Controllers\OfertaDeleteController;
 Route::resource('misofertas', OfertaDeleteController::class);
 //Route::get('/misofertas/edit/{id}', [OfertaDeleteController::class,'edit']);
 
-use App\Http\Controllers\TituloController;
 
-Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
+ /**
+ * -------------------------
+ *         OTROS
+ * -------------------------
+ */
 
+// Llevar al catalogo con ruta vacia
+Route::get('/', [TituloQueryController::class, 'index'])
+    ->middleware(['auth', 'can:consultarTitulo']);;
 
 // Ruta a la pagina simple
-Route::view('team', "team");
+Route::view('team', 'team')
+    ->name('team');
 
