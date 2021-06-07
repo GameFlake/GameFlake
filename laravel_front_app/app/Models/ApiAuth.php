@@ -23,6 +23,7 @@ class ApiAuth
             'device_name' => $device
         ]);
 
+        ddd($response->status());
         if($response->status() == 200) {
             return ($response->json()['token']);
         }
