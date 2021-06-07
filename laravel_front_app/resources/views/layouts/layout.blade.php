@@ -36,19 +36,17 @@
       </a>
       <a href="#" data-target="sidebar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-            <li><a href="#">        Inicio</a></li>
             <li><a href="{{ route('catalogo') }}">Catálogo</a></li>
-            <li><a href="#">        Mis juegos</a></li>
-            <li><a href="/ofertas"> Mis ofertas</a></li>
+            <li><a href="#">Mis juegos</a></li>
+            <li><a href="{{ route('ofertas') }}"> Mis ofertas</a></li>
             <a href="{{ route('logout') }}" class="deep-purple accent-2 btn">Cerrar sesión</a>
       </ul>
     </div>
   </nav>
   <ul class="sidenav right" id="sidebar">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Catálogo</a></li>
+        <li><a href="{{ route('catalogo') }}">Catálogo</a></li>
         <li><a href="#">Mis juegos</a></li>
-        <li><a href="#">Mis ofertas</a></li>
+        <li><a href="{{ route('ofertas') }}">Mis ofertas</a></li>
         <a href="{{ route('logout') }}" class="deep-purple accent-2 btn mt-2 ml-4">Cerrar sesión</a>
   </ul>
 
@@ -70,10 +68,9 @@
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text">Mapa del sitio</h5>
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#">Inicio</a></li>
-                <li><a class="grey-text text-lighten-3" href="/catalogo">Catálogo</a></li>
-                <li><a class="grey-text text-lighten-3" href="#">Mis juego</a></li>
-                <li><a class="grey-text text-lighten-3" href="/ofertas">Mis ofertas</a></li>
+                <li><a class="grey-text text-lighten-3" href="{{ route('catalogo') }}">Catálogo</a></li>
+                <li><a class="grey-text text-lighten-3" href="#">Mis juegos</a></li>
+                <li><a class="grey-text text-lighten-3" href="{{ route('ofertas') }}">Mis ofertas</a></li>
               </ul>
             </div>
           </div>

@@ -20,7 +20,7 @@
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{ $titulo["nombre"] }}</span>
-          <p><a href="#">Más detalles</a></p>
+          <p><a class="deep-purple-text text-accent-2" href="#">Más detalles</a></p>
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TituloQueryController;
+use App\Http\Controllers\OfertaQueryController;
 
 
 /**
@@ -58,7 +59,7 @@ Route::post('/users', [UserController::class, 'store'])
 
 Route::get('/catalogo', [TituloQueryController::class, 'index'])
     ->name('catalogo')
-    ->middleware(['auth', 'can:consultarTitulo']);;
+    ->middleware(['auth', 'can:consultarTitulo']);
  
  /**
  * -------------------------
@@ -66,7 +67,10 @@ Route::get('/catalogo', [TituloQueryController::class, 'index'])
  * -------------------------
  */
 
-Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
+Route::get('/ofertas', [OfertaQueryController::class, 'index'])
+    ->name('ofertas')
+    ->middleware(['auth', 'can:consultarOferta']);
+
 Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
 Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
 
