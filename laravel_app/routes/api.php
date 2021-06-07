@@ -30,13 +30,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Mando llamar a el controlador de ofertas (las ofertas que me hacen)
 Route::apiResource("ofertas", OfertaController::class);
+
+//Recibir el Id e ir al controlador para eliminar la oferta
 Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
 
+//Recibir el id e ir al controlador para actualizar la oferta 
 Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
 
 
+//Mando llamar a el controlador de ofertas (las ofertas que hago)
 Route::apiResource("misofertas", MisOfertasController::class);
-
+//Recibir el Id e ir al controlador para eliminar la oferta
 Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
 
 

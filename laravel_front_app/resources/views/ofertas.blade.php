@@ -34,7 +34,8 @@
     </script>
     @endif
 
-    
+
+
 <div class="container">
   @if (count($ofertaquery)!=0)  
     <table  class="responsive-table" >
@@ -197,45 +198,3 @@
 @endsection
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-/*
-  function hello() {
-          Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            return true;
-          }
-        })
-      }
-      
-      $(document).ready(function () {
-  $('.btn-submit').on('click',  function () {
-    swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: "No, cancel plx!",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function (isConfirm) {
-        if (isConfirm) {
-          swal("Deleted!", "Your imaginary file has been deleted!", "success");
-        } else {
-          swal("Cancelled", "Your imaginary file is safe :)", "error");
-        }
-      });
-  });
-});
-*/
-</script>
