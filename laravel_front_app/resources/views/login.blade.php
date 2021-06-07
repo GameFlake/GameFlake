@@ -18,7 +18,7 @@
                     <div class="flex-row justify-content-center">
                         <img src="{{ asset('/img/logo_paredmart.svg') }}" height="75px" alt="Logo GameFlake">
                     </div>
-                    <span class="card-title center-align pb-3">Inicia sesión</span>
+                    <span class="card-title center-align pb-3">Inicia sesión en GameFlake</span>
 
                     @if (session('error'))
                     <div class="flex-row justify-content-center mb-3">
