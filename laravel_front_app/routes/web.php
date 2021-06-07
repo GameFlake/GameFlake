@@ -74,30 +74,19 @@ Route::post('/users', [UserController::class, 'store'])
  */
 
 
-/*
-use App\Http\Controllers\APIController;
-Route:: get('/oferta', [APIController::class , 'listOferta']);
-*/
+Route::get('/ofertas', 'App\Http\Controllers\OfertaQueryController@index');
+Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
+Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
 
-Route::get('/oferta', function () {
-    return view('ofertas');
-});
+use App\Http\Controllers\OfertaDeleteController;
+//Route::get('/misofertas/{id}', [OfertaDeleteController::class, 'destroy']);
+Route::resource('misofertas', OfertaDeleteController::class);
+//Route::get('/misofertas/edit/{id}', [OfertaDeleteController::class,'edit']);
 
+use App\Http\Controllers\TituloController;
 
-/*
-//use App\Http\Controllers\Oferta;
-Route::get('/ofertas', Oferta::class, 'listOferta');
+Route::get('/catalogo', 'App\Http\Controllers\TituloQueryController@index');
 
-/*
-use App\Http\Controllers\Oferta;
-Route:: resource('/oferta',Oferta::class );
-*/
-
-/**
- * -------------------------
- *           OTROS
- * -------------------------
- */
 
 // Ruta a la pagina simple
 Route::view('team', "team");

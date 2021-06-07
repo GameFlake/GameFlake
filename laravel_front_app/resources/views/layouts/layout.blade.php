@@ -15,6 +15,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!--Custom CSS-->
       <link rel="stylesheet" href="{{ url('css/styles.css')}}">
+      <!-----Sweetalert--->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -31,9 +33,9 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Catálogo</a></li>
+            <li><a href="/catalogo">Catálogo</a></li>
             <li><a href="#">Mis juegos</a></li>
-            <li><a href="#">Mis ofertas</a></li>
+            <li><a href="/ofertas">Mis ofertas</a></li>
             <li><a href="#">Mis coincidencias</a></li>
             <li><a href="#">Mi perfil</a></li>
             <a class= "blue accent-4 btn">Cerrar sesión</a>
@@ -74,9 +76,9 @@
                 <h5 class="white-text">Información</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Catálogo</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/catalogo">Catálogo</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis juego</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Mis ofertas</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/ofertas">Mis ofertas</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mis coincidencias</a></li>
                   <li><a class="grey-text text-lighten-3" href="#!">Mi perfil</a></li>
                 </ul>

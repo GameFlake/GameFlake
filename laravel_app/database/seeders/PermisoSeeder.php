@@ -86,6 +86,7 @@ class PermisoSeeder extends Seeder
                 "idPermiso" => 604,
                 "nombre" => "eliminarUsuario",
             ],
+
         ]);
     }
 }

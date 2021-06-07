@@ -53,5 +53,6 @@ class PermisoRolSeeder extends Seeder
             ]);
             $id++;
         }
+
     }
 }

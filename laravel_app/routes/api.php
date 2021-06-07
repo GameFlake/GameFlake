@@ -4,8 +4,48 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Importar controladores
+use App\Http\Controllers\OfertaController;
+use App\Http\Controllers\MisOfertasController;
+use App\Http\Controllers\TituloController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+
+//Mando llamar a el controlador de ofertas (las ofertas que me hacen)
+Route::apiResource("ofertas", OfertaController::class);
+Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
+
+Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
+
+
+Route::apiResource("misofertas", MisOfertasController::class);
+
+Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
+
+
+
+
+
+Route::apiResource("titulos", TituloController::class);
+
+
 
 /**
  * -------------------------
@@ -37,3 +77,4 @@ Route::post('/users/store', [UserController::class, 'store'])
 
 // Muestra un error a las peticiones sin token
 Route::get('/unauthorized', [AuthController::class, "showAuthError"])->name('unauthorized');
+

@@ -51,6 +51,7 @@ class CreateJuegosTables extends Migration
             $table->date('fechaTerminacion')->nullable();
             $table->foreignId('idJuegoRecipiente');
             $table->foreignId('idJuegoOfertante');
+            $table->string('estado', 10)->nullable();
             
             $table->unique(['idJuegoRecipiente','idJuegoOfertante']);
 
