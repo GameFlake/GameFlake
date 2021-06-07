@@ -28,19 +28,19 @@
 
 </head>
 
-<body class="blue darken-1">
+<body class="indigo lighten-5">
   <nav>
-    <div class="nav-wrapper indigo darken-4">
+    <div class="nav-wrapper deep-purple darken-3">
       <a href="#" class="brand-logo flow-text ml-2">
         GameFlake
       </a>
       <a href="#" data-target="sidebar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
             <li><a href="#">        Inicio</a></li>
-            <li><a href="/catalogo">Catálogo</a></li>
+            <li><a href="{{ route('catalogo') }}">Catálogo</a></li>
             <li><a href="#">        Mis juegos</a></li>
             <li><a href="/ofertas"> Mis ofertas</a></li>
-            <a class="blue accent-4 btn">Cerrar sesión</a>
+            <a href="{{ route('logout') }}" class="deep-purple accent-2 btn">Cerrar sesión</a>
       </ul>
     </div>
   </nav>
@@ -49,7 +49,7 @@
         <li><a href="#">Catálogo</a></li>
         <li><a href="#">Mis juegos</a></li>
         <li><a href="#">Mis ofertas</a></li>
-        <a class="blue accent-4 btn mt-2 ml-4">Cerrar sesión</a>
+        <a href="{{ route('logout') }}" class="deep-purple accent-2 btn mt-2 ml-4">Cerrar sesión</a>
   </ul>
 
   @yield('register')
@@ -58,30 +58,30 @@
   <main class="containers-fluid">
       @yield('mainContent')
 
-      <footer class="page-footer indigo darken-4 ">
+      <footer class="page-footer deep-purple darken-3">
         <div class="container ">
           <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">¡Conoce más sobre nosotros!</h5>
-              <p class="grey-text text-lighten-4">Aplicación para que intercambies tus juegos.</p>
+              <a class="grey-text text-lighten-3" href="{{ route('team') }}">
+                <h5 class="white-text">¡Conoce más sobre nosotros!</h5>
+              </a>
+              <p class="grey-text text-lighten-4">GameFlake es una plataforma donde intercambiar tus juegos para que la diversión nunca termine.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Información</h5>
+              <h5 class="white-text">Mapa del sitio</h5>
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Inicio</a></li>
+                <li><a class="grey-text text-lighten-3" href="#">Inicio</a></li>
                 <li><a class="grey-text text-lighten-3" href="/catalogo">Catálogo</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Mis juego</a></li>
+                <li><a class="grey-text text-lighten-3" href="#">Mis juego</a></li>
                 <li><a class="grey-text text-lighten-3" href="/ofertas">Mis ofertas</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Mis coincidencias</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Mi perfil</a></li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="footer-copyright indigo darken-3">
+        <div class="footer-copyright deep-purple darken-1">
           <div class="container">
           © 2021 GameFlake 
-          <a class="grey-text text-lighten-4 right" href="#!">Aviso de privacidad</a>
+          <a class="grey-text text-lighten-4 right" href="#">Aviso de privacidad</a>
           </div>
         </div>
       </footer>

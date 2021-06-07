@@ -45,7 +45,7 @@ class AuthController extends Controller
         $request->session()->put('token', $token);
         $request->session()->put('permissions', $permissions);
 
-        return redirect()->route('home');
+        return redirect()->route('catalogo');
     }
 
     /**
