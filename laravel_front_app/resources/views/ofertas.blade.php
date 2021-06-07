@@ -63,13 +63,13 @@
                   {{ method_field('POST') }}
                   <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
                   <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php } ?>  >
-                  <button type="submit" value="delete" class="btn-flat deep-purple darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium green-text">check</i></button>
+                  <button type="submit" value="delete" class="btn green accent-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium white-text">check</i></button>
                 </form>
                 </td>
               @else
                 <td class="center-align">
                 <form>
-                  <button type="submit" value="delete" class="btn-flat deep-purple darken-4" id="btn-submit" disabled><i class="material-icons medium gray-text">check</i></button>
+                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" disabled><i class="material-icons medium white-text">check</i></button>
                 </form>
                 </td>
               @endif
@@ -80,7 +80,7 @@
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}
-                  <button type="submit" value="delete" class="btn-flat deep-purple darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text fa-9x">close</i></button>
+                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium white-text">close</i></button>
                 </form>
               </td>
               <td class="center-align"><a 
@@ -142,7 +142,7 @@
             <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
               @csrf
               {{ method_field('DELETE')}}
-            <button type="submit" value="delete" class="btn-flat deep-purple darken-4" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons  red-text">close</i> </button>
+            <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons white-text">close</i> </button>
             </form>
             </td>               
             <td class="center-align"><a 
