@@ -58,7 +58,7 @@ class AuthController extends Controller
         
         // Crear token con permisos y devolver token y permisos
         $permissions = array_values($user->getPermissions());
-        $token = $user->createToken($request->device_name, $permissions);
+    $token = $user->createToken($request->device_name/*, $permissions*/);
         $responseJson = [
             'token' => $token->plainTextToken,
             'permisos' => $permissions
@@ -86,7 +86,7 @@ class AuthController extends Controller
      */
     public function showAuthError(Request $request) {
         $responseJson = [
-            'error' => 'No autorizado. Buen intento.',
+            'error' => 'No autenticado. Buen intento.',
             'codigo' => 401
         ];
         return response()->json($responseJson, 401);
