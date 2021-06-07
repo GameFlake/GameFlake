@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             OfertaSeeder::class,
             ReviewSeeder::class,
             InteresSeeder::class,
+            UsuarioRolSeeder::class,
+            PermisoRolSeeder::class
         ]);
     }
 }

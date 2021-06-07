@@ -14,37 +14,45 @@ class PermisoRolSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('permisoRol')->insert([
-            [
-                "idPermisoRol" => 1,
-                "idPermiso" => "302",
-                "idRol" => "202",
-            ],
-            [
-                "idPermisoRol" => 2,
-                "idPermiso" => "301",
-                "idRol" => "201",
-            ],
-            [
-                "idPermisoRol" => 3,
-                "idPermiso" => "302",
-                "idRol" => "201",
-            ],
-            [
-                "idPermisoRol" => 4,
-                "idPermiso" => "303",
-                "idRol" => "201",
-            ],
-            [
-                "idPermisoRol" => 5,
-                "idPermiso" => "304",
-                "idRol" => "201",
-            ],
-            [
-                "idPermisoRol" => 6,
-                "idPermiso" => "305",
-                "idRol" => "201",
-            ],
-        ]);
+        $adminPermissions = [
+            301, 302, 303, 304,
+            401, 402, 403, 404,
+            501, 502, 503, 504,
+            601, 602, 603, 604, 
+        ];
+
+        $userPermissions = [
+            302,
+            401, 402, 403, 404,
+            501, 502, 503, 504,
+            602,
+        ];
+
+        $admin_id = 201;    
+        $user_id = 202;
+        $id = 1;
+
+        for($i = 0; $i < count($adminPermissions); $i++) {
+            DB::table('permisoRol')->insert([
+                [
+                    "idPermisoRol" => $id,
+                    "idPermiso" => $adminPermissions[$i],
+                    "idRol" => $admin_id,
+                ]
+            ]);
+            $id++;
+        }
+
+        for($i = 0; $i < count($userPermissions); $i++) {
+            DB::table('permisoRol')->insert([
+                [
+                    "idPermisoRol" => $id,
+                    "idPermiso" => $userPermissions[$i],
+                    "idRol" => $user_id,
+                ]
+            ]);
+            $id++;
+        }
+
     }
 }

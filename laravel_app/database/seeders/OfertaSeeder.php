@@ -22,6 +22,7 @@ class OfertaSeeder extends Seeder
                 "idJuegoRecipiente" => "1",
                 "idJuegoOfertante" => "2",
                 "estado" => "Pendiente",
+
             ],
             [
                 "idOferta" => 754,
@@ -30,6 +31,7 @@ class OfertaSeeder extends Seeder
                 "idJuegoRecipiente" => "3",
                 "idJuegoOfertante" => "4",
                 "estado" => "Aprobado",
+
             ]
         ]);
     }

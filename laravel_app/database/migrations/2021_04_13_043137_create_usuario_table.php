@@ -17,10 +17,10 @@ class CreateUsuarioTable extends Migration
             $table->id('idUsuario');
             $table->string('nombre', 20);
             $table->string('apellido', 20);
-            $table->string('correo', 255);
+            $table->string('correo', 255)->unique();
             $table->string('password', 255);
             $table->string('telefono', 10);
-            $table->string('username', 20);
+            $table->string('username', 20)->unique();
         });
     }
 
