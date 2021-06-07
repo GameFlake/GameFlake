@@ -13,6 +13,7 @@ class MisOfertas extends Model
 
     public $table= "oferta";
     protected $primaryKey='idOferta';
+    //$request->user()->id;
     
     //Get de todas las ofertas que he hecho por los juegos que tengo 
     public static function getAllMisOfertas(){

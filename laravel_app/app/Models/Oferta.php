@@ -17,6 +17,8 @@ class Oferta extends Model
     protected $primaryKey='idOferta';
     public $timestamps = false;
 
+    //$request->user()->id;
+
     //Get de todas las ofertas que me han hecho por mis juegos 
     public static function getAllOfertas(){
         $oferta= DB::table('juego')
