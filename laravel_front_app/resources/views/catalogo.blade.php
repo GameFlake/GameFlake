@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('pageTitle', "GameFlake")
+@section('pageTitle', "GameFlake - Catálogo")
 
 @section('header')
 <div class="container">

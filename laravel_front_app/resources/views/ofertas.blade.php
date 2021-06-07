@@ -1,58 +1,55 @@
 @extends('layouts.layout')
 
-@section('pageTitle', "GameFlake")
+@section('pageTitle', "GameFlake - Ofertas")
 
 
 @section('header')
   <div class="container">
-    <h1 class='text-center titulo white-text'><a href="#"><i class="material-icons large white-text">arrow_back</i></a> Ofertas recibidas</h1>
-    <br>
-    <br>
+    <h1 class='text-center titulo'>
+      Ofertas recibidas
+    </h1>
   </div>
 @endsection
 
 @section('mainContent')
 
-@if(Session::has('update'))
-    <script>
-     Swal.fire(
-              '¡Aceptado!',
-              'La oferta fue aceptada.',
-              'success'
-            )
-    </script>
-    @endif
+  @if(Session::has('update'))
+  <script>
+    Swal.fire(
+            '¡Aceptado!',
+            'La oferta fue aceptada.',
+            'success'
+          );
+  </script>
+  @endif
 
 
-@if(Session::has('eliminate'))
+  @if(Session::has('eliminate'))
     <script>
      Swal.fire(
               '¡Elimiado!',
               'La oferta fue eliminada.',
               'success'
-            )
+            );
     </script>
-    @endif
+  @endif
 
-
-
-<div class="container">
-  @if (count($ofertaquery)!=0)  
-    <table  class="responsive-table" >
+  <div class="container">
+    @if (count($ofertaquery)!=0)  
+    <table  class="responsive-table mb-5" >
         
         <thead class="grey darken-4 ">
           <tr class="white-text  ">
               <th class="center-align">Nombre</th>
-              <th class="center-align">Quiere cambiar </th>
+              <th class="center-align">Quiere cambiar su</th>
               <th class="center-align">Por tu</th>
               <th class="center-align">Aceptar </th>
               <th class="center-align">Rechazar </th>
               <th class="center-align">Estado</th>
           </tr>
         </thead>
-
         
-        <tbody class="indigo darken-4 white-text">
+        <tbody class="deep-purple darken-4 white-text">
         @foreach ($ofertaquery as $oferta)
 
             <tr>
@@ -66,13 +63,13 @@
                   {{ method_field('POST') }}
                   <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
                   <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php } ?>  >
-                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium green-text">check</i></button>
+                  <button type="submit" value="delete" class="btn green accent-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium white-text">check</i></button>
                 </form>
                 </td>
               @else
                 <td class="center-align">
                 <form>
-                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" disabled><i class="material-icons medium gray-text">check</i></button>
+                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" disabled><i class="material-icons medium white-text">check</i></button>
                 </form>
                 </td>
               @endif
@@ -83,16 +80,21 @@
                 <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
                     @csrf
                     {{ method_field('DELETE')}}
-                  <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium red-text fa-9x">close</i></button>
+                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium white-text">close</i></button>
                 </form>
               </td>
-              <td class="center-align"><a 
-              @if ($oferta["estado"] === 'Pendiente')
-              class="yellow darken-2 btn"
-              @else
-              class="green accent-4  btn"
-              @endif
-              >{{ $oferta["estado"] }}</a></td>
+              <td class="center-align">
+                <span data-badge-caption="" data-position="top"
+                @if ($oferta["estado"] === 'Pendiente')
+                  data-tooltip="Esta oferta aún espera una respuesta"
+                  class="new badge tooltipped yellow darken-2"
+                @else
+                  data-tooltip="Esta oferta fue aceptada"
+                  class="new badge tooltipped green accent-4"
+                @endif
+                >{{ $oferta["estado"] }}
+                </span>
+              </td>
               
             </tr>
         @endforeach
@@ -109,9 +111,6 @@
     </div>
     </div> 
     @endif
-    <br>
-    <br>
-    <br>
 
     @if(Session::has('message'))
     <script>
@@ -119,34 +118,26 @@
               '¡Elimiado!',
               'La oferta fue eliminada.',
               'success'
-            )
+            );
     </script>
     @endif
    
-    <hr>
-    <br>
-    <br>
-    <h1 class='text-center titulo white-text'> Ofertas realizadas</h1>
-
-    <br>
-    <br>
-
-
+ 
+    <h1 class='text-center titulo'> Ofertas realizadas</h1>
 
     @if (count($misofertas)!=0)  
-    <table  class="responsive-table" >
+    <table  class="responsive-table mb-5" >
       <thead class="grey darken-4 ">
         <tr class="white-text  ">
-            <th class="center-align">Quiero cambiar</th>
+            <th class="center-align">Quieres cambiar tu</th>
             <th class="center-align">Por</th>
             <th class="center-align">De</th>
             <th class="center-align">Eliminar</th>
             <th class="center-align">Estado</th>
         </tr>
       </thead>
-      
 
-      <tbody class="indigo darken-4 white-text">
+      <tbody class="deep-purple darken-4 white-text">
       @foreach ($misofertas as $ofertas)
           <tr >
             <td class="center-align">{{ $ofertas["TR"] }}</td>
@@ -156,16 +147,21 @@
             <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
               @csrf
               {{ method_field('DELETE')}}
-            <button type="submit" value="delete" class="btn-flat indigo darken-4" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons  red-text">close</i> </button>
+            <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons white-text">close</i> </button>
             </form>
             </td>               
-            <td class="center-align"><a 
-            @if ($ofertas["estado"] === 'Pendiente')
-            class="yellow darken-2 btn"
-            @else
-            class="green accent-4  btn"
-            @endif
-            >{{ $ofertas["estado"] }}</a></td>
+            <td class="center-align">
+              <span data-badge-caption="" data-position="top"
+                @if ($ofertas["estado"] === 'Pendiente')
+                  data-tooltip="Esta oferta aún espera una respuesta"
+                  class="new badge tooltipped yellow darken-2"
+                @else
+                  data-tooltip="Esta oferta fue aceptada"
+                  class="new badge tooltipped green accent-4"
+                @endif
+                >{{ $ofertas["estado"] }}
+              </span>
+            </td>
           </tr>
       @endforeach
       </tbody>
@@ -183,18 +179,6 @@
     @endif
 
     
+  </div>
 
-
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-</div>
-
-
-      
 @endsection
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
