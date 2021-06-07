@@ -81,7 +81,7 @@
         <div class="footer-copyright deep-purple darken-1">
           <div class="container">
           © 2021 GameFlake 
-          <a class="grey-text text-lighten-4 right" href="#">Aviso de privacidad</a>
+          <a class="grey-text text-lighten-4 right" href="https://gameflake.github.io/api-docs/build/">Documentación de la API</a>
           </div>
         </div>
       </footer>
