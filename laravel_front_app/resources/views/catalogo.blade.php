@@ -21,7 +21,7 @@
     <div class="col s4">
       <div class="card small">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" height="160" src={{ $titulo['imgRuta'] }}>
+          <img class="activator" height="160" src={{ asset($titulo['imgRuta']) }}>
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">{{ $titulo["nombre"] }}</span>
