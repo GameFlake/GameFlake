@@ -83,13 +83,18 @@
                   <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium white-text">close</i></button>
                 </form>
               </td>
-              <td class="center-align"><a 
-              @if ($oferta["estado"] === 'Pendiente')
-              class="yellow darken-2 btn"
-              @else
-              class="green accent-4  btn"
-              @endif
-              >{{ $oferta["estado"] }}</a></td>
+              <td class="center-align">
+                <span data-badge-caption="" data-position="top"
+                @if ($oferta["estado"] === 'Pendiente')
+                  data-tooltip="Esta oferta aún espera una respuesta"
+                  class="new badge tooltipped yellow darken-2"
+                @else
+                  data-tooltip="Esta oferta fue aceptada"
+                  class="new badge tooltipped green accent-4"
+                @endif
+                >{{ $oferta["estado"] }}
+                </span>
+              </td>
               
             </tr>
         @endforeach
@@ -145,13 +150,18 @@
             <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons white-text">close</i> </button>
             </form>
             </td>               
-            <td class="center-align"><a 
-            @if ($ofertas["estado"] === 'Pendiente')
-            class="yellow darken-2 btn"
-            @else
-            class="green accent-4  btn"
-            @endif
-            >{{ $ofertas["estado"] }}</a></td>
+            <td class="center-align">
+              <span data-badge-caption="" data-position="top"
+                @if ($ofertas["estado"] === 'Pendiente')
+                  data-tooltip="Esta oferta aún espera una respuesta"
+                  class="new badge tooltipped yellow darken-2"
+                @else
+                  data-tooltip="Esta oferta fue aceptada"
+                  class="new badge tooltipped green accent-4"
+                @endif
+                >{{ $ofertas["estado"] }}
+              </span>
+            </td>
           </tr>
       @endforeach
       </tbody>
