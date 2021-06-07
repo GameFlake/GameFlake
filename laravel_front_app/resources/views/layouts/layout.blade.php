@@ -17,15 +17,6 @@
     <link rel="stylesheet" href="{{ url('css/styles.css')}}">
     <link type="text/css" rel="stylesheet" href="{{ asset('/css/utilities.css') }}" />
 
-    <!--Sweetalert--->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 <body class="indigo lighten-5">
@@ -84,11 +75,14 @@
       </footer>
     </main>
     
-    <script type="text/javascript" src="{{asset ('assets/js/materialize.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset ('assets/js/materialize.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <script>
-    $(document).ready(function() {
-        $('.sidenav').sidenav();
-    });
+      $(document).ready(function() {
+          $('.sidenav').sidenav();
+      });
     </script>     
 
     @stack('scripts')
