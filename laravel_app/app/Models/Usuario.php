@@ -37,6 +37,30 @@ class Usuario extends Authenticatable
     ];
 
     /**
+     * Return the roles of the user.
+     */
+    public function roles() {
+        return $this->belongsToMany(Rol::class, 'usuarioRol', 'idUsuario', 'idRol');
+    }
+
+        /**
+     * Get current user privileges.
+     */
+    public function getPermissions() {
+
+        //return $this->roles[0]->permisos;
+
+        $permissions = [];
+        foreach($this->roles as $role) {
+            $rolePermissions = $role->permisos->pluck('nombre')->toArray();
+            array_push($permissions, $rolePermissions);
+        }
+
+        // Merge all privileges in a single array and remove duplicates
+        return array_unique(array_merge(...$permissions));
+    }
+
+    /**
      * The table associated with the model.
      *
      * @var string

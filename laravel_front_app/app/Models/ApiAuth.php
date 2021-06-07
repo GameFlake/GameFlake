@@ -24,7 +24,7 @@ class ApiAuth
         ]);
 
         if($response->status() == 200) {
-            return ($response->json()['token']);
+            return ($response->json());
         }
         
         return null;

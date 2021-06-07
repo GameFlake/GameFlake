@@ -30,16 +30,20 @@ class AuthController extends Controller
         $password = $request->password;
         $device = $request->header('User-Agent', 'default');
         
-        $token = ApiAuth::getToken($email_or_username, $password, $device);
+        $response = ApiAuth::getToken($email_or_username, $password, $device);
 
-        if ($token == null) {
+        if ($response == null) {
             return redirect()->route('login')
                 ->with('error', 'Credenciales incorrectas. Vuelva a intentarlo porfavor.');
         }
 
-        // Guardar token en la sesion
+        $token = $response["token"];
+        $permissions = $response["permisos"];
+
+        // Guardar token y permisos en la sesion
         $request->session()->regenerate();
         $request->session()->put('token', $token);
+        $request->session()->put('permissions', $permissions);
 
         return redirect()->route('home');
     }
