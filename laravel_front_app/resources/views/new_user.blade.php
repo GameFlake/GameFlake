@@ -72,7 +72,7 @@
                             <div class="col s12 l6">
                                 <div class="input-field">
                                     <input placeholder="Ingresa tu número de teléfono" id="phone" type="tel" pattern="[0-9]{10}"
-                                            name="phone" class="validate" value="{{ old('phone') }}" required>
+                                            maxlength=10 name="phone" class="validate" value="{{ old('phone') }}" required>
                                     <label for="phone">Teléfono</label>
                                 </div>
                                 @error('phone')
@@ -110,6 +110,13 @@
                             </div>
                         </div>
 
+                        @if (session('captcha'))
+                        <div>
+                            <small class="red-text text-darken-1">{{ session('captcha') }}</small>
+                        </div>
+                        @endif
+                        <div class="h-captcha mb-4" data-sitekey="d5945e9b-1bcc-4cc5-80bd-6df8d5baef0b" ></div> 
+                        
                         <div class="row">
                             <div class="col s12">
                                 <p>
@@ -136,6 +143,7 @@
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.datepicker');

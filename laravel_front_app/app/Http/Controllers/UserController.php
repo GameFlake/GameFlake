@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 // Importar modelos
 use App\Models\ApiAuth;
@@ -39,6 +40,16 @@ class UserController extends Controller
             'terms' => 'required',
         ]);
         
+        // Validar hcaptcha
+        $captcha_reponse = Http::asForm()->post('https://hcaptcha.com/siteverify', [
+            'secret' => "0xBe5d564C39b35176Fac92f44A1b22fa949d969B4",
+            'response' => $request->input('h-captcha-response')
+        ]);
+        if(!$captcha_reponse->json()['success']) {
+            return redirect()->route('create_user')
+                ->with('captcha', 'El captcha es obligatorio.');
+        }
+
         $first_name = $request->first_name;
         $last_name = $request->last_name;
         $password = $request->password;
@@ -55,11 +66,15 @@ class UserController extends Controller
         
         // Iniciar sesion del usuario
         $device = $request->header('User-Agent', 'default');        
-        $token = ApiAuth::getToken($email, $password, $device);
+        $response = ApiAuth::getToken($email, $password, $device);
 
-        // Guardar token en la sesion
+        $token = $response["token"];
+        $permissions = $response["permisos"];
+
+        // Guardar token y permisos en la sesion
         $request->session()->regenerate();
         $request->session()->put('token', $token);
+        $request->session()->put('permissions', $permissions);
 
         return redirect()->route('home');
     }
