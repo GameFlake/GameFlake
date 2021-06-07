@@ -15,8 +15,10 @@ class MisOfertasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Manda llamar a la funcion para consultar todas las ofertas realizadas
     public function index()
     {
+         //Laravel transforma el contedo a json por defecto en esta parte
         return MisOfertas::getAllMisOfertas();
     }
 
@@ -81,6 +83,8 @@ class MisOfertasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //Recibe un Id y lo que hace es mandar ese Id al modelo para que se elimine
     public function destroy($id)
     {
         $ofertas = MisOfertas::find($id);

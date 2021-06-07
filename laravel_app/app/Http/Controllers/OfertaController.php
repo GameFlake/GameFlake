@@ -13,6 +13,7 @@ class OfertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Manda llamar a la funcion para consultar todas las ofertas recibidas
     public function index()
     {
         //Laravel transforma el contedo a json por defecto en esta parte
@@ -69,6 +70,7 @@ class OfertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //Funcion que resibe un request de la información del estado y lo manda al modelo para que lo actulice
     public function update(Request $request)
     {
         
@@ -85,13 +87,14 @@ class OfertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+     //Recibe un Id y lo que hace es mandar ese Id al modelo para que se elimine
     public function destroy($id)
     {
         $ofertas = Oferta::find($id);
         
         $success = $ofertas->delete();
 
-        //Oferta::destroy($id);
         return $success ;
     }
 }

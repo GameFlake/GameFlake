@@ -79,20 +79,16 @@ class OfertaDeleteController extends Controller
      * @param  \App\Models\Oferta  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
+
+     //Elimina la oferta por el id 
     public function destroy($id)
     {
 
         $ofertaquery= Oferta::getOferta($id);
-
-        var_dump($ofertaquery);
         
         if($ofertaquery != NULL){
             return  redirect('ofertas')->with('message','Oferta borrada con éxito');
         }
         
-        /*
-        Oferta::destroy($id);
-        return redirect("ofertas");
-        */
     }
 }

@@ -27,10 +27,6 @@ class OfertaQueryController extends Controller
             return  redirect('ofertas')->with('eliminate','Oferta borrada con éxito');
         }
         
-        /*
-        Oferta::destroy($id);
-        return redirect("ofertas");
-        */
     }
 
     /**
@@ -40,10 +36,10 @@ class OfertaQueryController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
+
+     //Actualizar el estatus de la oferta por medio del request
     public function update(Request $request)
     { 
-       // return $request;
-        
         $ofertaquery= OfertaQuery::updateOferta($request);
 
         var_dump($ofertaquery);
