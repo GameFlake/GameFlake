@@ -1,12 +1,12 @@
 @extends('layouts.layout')
 
-@section('pageTitle', "GameFlake - {{ $titulo["nombre"] }}")
+@section('pageTitle', 'GameFlake - {{ $titulo["nombre"] }}')
 
 @section('header')
 
 <div class="container">
 @foreach($tituloquery as $titulo)
-<h1 class='text-center titulo white-text'>{{ $titulo["nombre"] }}</h1>
+<h1 class='text-center titulo'>{{ $titulo["nombre"] }}</h1>
 </div>
 <br>
 <br>
@@ -26,9 +26,7 @@
       <h5>Calificación: 
         @for ($i = 1; $i <= 5; $i++)
           @if($i <= $titulo["calificacion"])
-          <span class="fa fa-star checked"></span>
-          @else
-          <span class="fa fa-star"></span>
+          <span>&#x2B50;</span>
           @endif
         @endfor
       </h5>
@@ -43,7 +41,7 @@
 <br><br>
 <div class="container">
 
-<h5 class='text-center titulo white-text'>Juegos disponibles para intercambio de este título</h5>
+<h5 class='text-center titulo'>Juegos disponibles para intercambio de este título</h5>
 </div>
 <br>
 
@@ -131,11 +129,5 @@
 
 </div>
 <br>
-<script>
-$(document).ready(function(){
-    $('.modal').modal();
-  });
-</script>
-
       
 @endsection
