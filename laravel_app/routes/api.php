@@ -22,3 +22,6 @@ use App\Http\Controllers\TituloController;
 
 Route::apiResource("titulos", TituloController::class);
 Route::apiResource('titulos.show', TituloController::class);
+
+use App\Http\Controllers\JuegoController;
+Route::apiResource('juegos', JuegoController::class);
