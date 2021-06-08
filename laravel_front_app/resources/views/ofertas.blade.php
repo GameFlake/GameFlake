@@ -15,15 +15,14 @@
 
   <div class="container">
     @if (count($ofertaquery) != 0)  
-    <table  class="responsive-table mb-5" >
+    <table class="responsive-table striped mb-5" >
         
-        <thead class="grey darken-4 ">
-          <tr class="white-text  ">
+        <thead class="grey darken-4">
+          <tr class="white-text">
               <th class="center-align">Nombre</th>
               <th class="center-align">Quiere cambiar su</th>
               <th class="center-align">Por tu</th>
-              <th class="center-align">Aceptar </th>
-              <th class="center-align">Rechazar </th>
+              <th class="center-align">Acciones</th>
               <th class="center-align">Estado</th>
           </tr>
         </thead>
@@ -35,32 +34,33 @@
               <td class="center-align">{{ $oferta["nombre"] }} {{ $oferta["Apellido"] }}</td>
               <td class="center-align">{{ $oferta["TO"] }}</td>
               <td class="center-align">{{ $oferta["TR"] }}</td>
-              @if($oferta["estado"] === 'Pendiente')
-                <td class="center-align">
-                <form action="{{ url('/ofertas/update') }}" method="post" >
-                @csrf
-                  {{ method_field('POST') }}
-                  <input id="idOferta" name="idOferta" type="hidden" value= "{{$oferta['id']}}" >
-                  <input id="estado" name="estado" type="hidden" <?php  if ($oferta["estado"] === 'Pendiente'){ ?> value ='Aprobado'<?php } ?>  >
-                  <button type="submit" value="delete" class="btn green accent-4" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;"><i class="material-icons medium white-text">check</i></button>
-                </form>
-                </td>
-              @else
-                <td class="center-align">
-                <form>
-                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" disabled><i class="material-icons medium white-text">check</i></button>
-                </form>
-                </td>
-              @endif
-
-
               <td class="center-align">
-             
-                <form action="{{ url('/ofertas/'.$oferta['id']) }}" method="post" >
+                
+                @if($oferta["estado"] === 'Pendiente')
+                  <!-- Aceptar -->
+                  <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                     @csrf
-                    {{ method_field('DELETE')}}
-                  <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"><i class="material-icons medium white-text">close</i></button>
-                </form>
+                    <input id="estado" name="estado" type="hidden" value ='Aprobado'>
+                    <button type="submit" class="btn green accent-4 tooltipped" 
+                            data-tooltip="Aceptar" data-position="top"
+                            onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;">
+                            <i class="material-icons medium white-text">check</i>
+                    </button>
+                  </form>
+                
+                  <!-- Rechazar -->
+                  <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
+                    @csrf
+                    <input id="estado" name="estado" type="hidden" value ='Rechazado'>
+                    <button type="submit" class="btn red darken-1 tooltipped" 
+                            data-tooltip="Rechazar" data-position="top"
+                            onclick="return confirm('¿Estas seguro que quieres borrar la oferta?') ;">
+                            <i class="material-icons medium white-text">close</i>
+                    </button>
+                  </form>
+                @elseif($ofertas["estado"] == 'intercambiando')
+
+                @endif
               </td>
               <td class="center-align">
                 <span data-badge-caption="" data-position="top"
@@ -74,7 +74,6 @@
                 >{{ $oferta["estado"] }}
                 </span>
               </td>
-              
             </tr>
         @endforeach
         </tbody>           

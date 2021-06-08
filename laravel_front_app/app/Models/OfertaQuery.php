@@ -20,6 +20,15 @@ class OfertaQuery extends Model
         return ($response->json());
     }
 
+    //Mandar a llamar a la api, la información que necesito por medio del URL
+    // @return un json con esta información
+    public static function getMisOfertas() {
+        $token = session('token');
+        $response = Http::withToken($token)
+                        ->get(env('API_URL').'misofertas');
+        return ($response->json());
+    }
+
     // Mandar a llamar a la api, la información que necesito (ofertas relizadas) por medio del URL
     // @return un json con esta información
     public static function destroy($id) {
@@ -34,12 +43,11 @@ class OfertaQuery extends Model
     
     // Mandar a llamar a la api, la información que necesito (cual es el estado de a oferta) por medio del URL
     // @return un json con esta información
-    public static function updateOferta($request) {
+    public static function updateOferta($idOferta, $estado) {
         $token = session('token');
         $response = Http::withToken($token)
-                        ->put(env('API_URL').'ofertas/update',[
-            'idOferta' => $request->idOferta,
-            'estado' => $request->estado,
+                        ->post(env('API_URL').'ofertas/'.$idOferta.'/update',[
+            'estado' => $estado,
         ]);
         if($response->status() == 200) {
             return (true);

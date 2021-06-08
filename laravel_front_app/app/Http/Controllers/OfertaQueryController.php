@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\OfertaQuery;
-use App\Models\MisOfertasQuery;
 use Illuminate\Http\Request;
 
 class OfertaQueryController extends Controller
@@ -13,7 +12,7 @@ class OfertaQueryController extends Controller
     //@return la vista con las dos consultas necesarias
     public function index(Request $request) {
         $ofertaquery = OfertaQuery::getOferta();
-        $misofertasquery = MisOfertasQuery::getMisOfertas();
+        $misofertasquery = OfertaQuery::getMisOfertas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
 
@@ -25,10 +24,7 @@ class OfertaQueryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request) { 
-        $ofertaquery= OfertaQuery::updateOferta($request);
-
-        var_dump($ofertaquery);
-        
+        $ofertaquery= OfertaQuery::updateOferta($request->idOferta, $request->estado);
         if($ofertaquery != NULL){
             return  redirect('ofertas')->with('update','Oferta editada con éxito');
         } 
