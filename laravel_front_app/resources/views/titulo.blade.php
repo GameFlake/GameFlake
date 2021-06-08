@@ -117,7 +117,17 @@
     </table>
 
     @else
-    
+    <div class="col s12 m7">
+    <div class="card horizontal  blue lighten-2">
+      <div class="card-stacked">
+        <div class="card-content center-align">
+          <h3>No hay juegos disponibles para este título por el momento.</h3>
+        </div>
+      </div>
+    </div>
+    </div>
+    @endif
+
 
 </div>
 <br>
