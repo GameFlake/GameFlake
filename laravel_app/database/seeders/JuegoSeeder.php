@@ -47,6 +47,22 @@ class JuegoSeeder extends Seeder
                 "idCondicion" => "3", //usado
                 "idConsola" => "12", //Xbox One
             ],
+            [
+                "idJuego" => 5,
+                "comentarios" => "Funciona a la perfección, aunque tiene muchos rayones.",
+                "idUsuario" => "2", // Memo
+                "idTitulo" => "1", //Crash
+                "idCondicion" => "3", //usado
+                "idConsola" => "2", //Play 5
+            ],
+            [
+                "idJuego" => 6,
+                "comentarios" => "Casi casi nuevo, pero ya se usó una vez",
+                "idUsuario" => "1", // Adolfo
+                "idTitulo" => "3", //BOTW
+                "idCondicion" => "2", //seminuevo
+                "idConsola" => "1", //Switch
+            ],
         ]);
     }
 }

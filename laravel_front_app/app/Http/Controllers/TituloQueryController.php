@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TituloQuery;
+use App\Models\JuegoQuery;
 
 class TituloQueryController extends Controller
 {
@@ -14,6 +15,7 @@ class TituloQueryController extends Controller
 
     public function showTitulo($id){
         $tituloquery = TituloQuery::getTitulo($id);
-        return view("titulo", ["tituloquery" => $tituloquery]);
+        $juegoquery = JuegoQuery::getJuegosByTitulo($id);
+        return view("titulo", ["tituloquery" => $tituloquery, "juegoquery" => $juegoquery]);
     }
 }
