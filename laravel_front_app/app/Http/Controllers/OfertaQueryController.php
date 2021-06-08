@@ -11,22 +11,20 @@ class OfertaQueryController extends Controller
     //Llamar la función del modelo que me regresa el json, para enviarselo a la vista
     //Llamo la funcion de ofertas recibidas y realizadas
     //@return la vista con las dos consultas necesarias
-    public function index(){
-        $ofertaquery= OfertaQuery::getOferta();
-        $misofertasquery=MisOfertasQuery::getMisOfertas();
+    public function index(Request $request) {
+        $ofertaquery = OfertaQuery::getOferta();
+        $misofertasquery = MisOfertasQuery::getMisOfertas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
-    public function destroy($id)
-    {
 
-        $ofertaquery= OfertaQuery::getOfertabyid($id);
-
-        var_dump($ofertaquery);
+    public function destroy($id) {
+        $ofertaquery = OfertaQuery::destroy($id);
         
         if($ofertaquery != NULL){
-            return  redirect('ofertas')->with('eliminate','Oferta borrada con éxito');
-        }
-        
+            return redirect('ofertas')->with('eliminate', 'Oferta borrada con éxito');
+        }   
+
+        return redirect('ofertas');
     }
 
     /**

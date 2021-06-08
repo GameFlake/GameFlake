@@ -58,7 +58,7 @@ class AuthController extends Controller
         
         // Crear token con permisos y devolver token y permisos
         $permissions = array_values($user->getPermissions());
-    $token = $user->createToken($request->device_name/*, $permissions*/);
+    $token = $user->createToken($request->device_name, $permissions);
         $responseJson = [
             'token' => $token->plainTextToken,
             'permisos' => $permissions

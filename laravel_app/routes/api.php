@@ -22,34 +22,36 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/**
+ * -------------------------
+ *         OFERTAS
+ * -------------------------
+ */
+Route::get('/ofertas', [OfertaController::class, "index"])
+    ->middleware(['auth:sanctum', 'can:consultarOferta']);
+
+Route::put('/ofertas/{id}', [OfertaController::class, "update"])
+    ->middleware(['auth:sanctum', 'can:editarOferta']);
+
+Route::delete('/ofertas/{id}', [OfertaController::class, "destroy"])
+    ->middleware(['auth:sanctum', 'can:eliminarOferta']);
 
 
+/*Route::get("/misofertas", [MisOfertasController::class, "index"])
+    ->middleware('auth:sanctum');*/
 
-//Mando llamar a el controlador de ofertas (las ofertas que me hacen)
-Route::apiResource("ofertas", OfertaController::class);
+//Route::apiResource("ofertas", OfertaController::class);
 
 //Recibir el Id e ir al controlador para eliminar la oferta
-Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
+//Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
 
 //Recibir el id e ir al controlador para actualizar la oferta 
-Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
+//Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
 
-
-//Mando llamar a el controlador de ofertas (las ofertas que hago)
-Route::apiResource("misofertas", MisOfertasController::class);
 //Recibir el Id e ir al controlador para eliminar la oferta
-Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
-
-
-
-
+//Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
 
 Route::apiResource("titulos", TituloController::class);
-
-
 
 /**
  * -------------------------
@@ -77,7 +79,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Registrar nuevo usuario
 Route::post('/users/store', [UserController::class, 'store'])
     ->name('store_user');
-
 
 // Muestra un error a las peticiones sin token
 Route::get('/unauthorized', [AuthController::class, "showAuthError"])->name('unauthorized');

@@ -144,11 +144,13 @@
             <td class="center-align">{{ $ofertas["TO"] }}</td>
             <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
             <td class="center-align">
-            <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
-              @csrf
-              {{ method_field('DELETE')}}
-            <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons white-text">close</i> </button>
-            </form>
+              <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
+                @csrf
+                {{ method_field('DELETE') }}
+                <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"> 
+                  <i class="material-icons white-text">close</i> 
+                </button>
+              </form>
             </td>               
             <td class="center-align">
               <span data-badge-caption="" data-position="top"

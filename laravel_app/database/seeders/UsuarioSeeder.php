@@ -21,7 +21,7 @@ class UsuarioSeeder extends Seeder
                 "nombre" => "Adolfo",
                 "apellido" => "Acosta",
                 "correo" => "aacost@gmail.com",
-                "password" => Hash::make("%&jkkldAcosta"),
+                "password" => Hash::make("pass"),
                 "telefono" => "4423765643",
                 "username" => "acostagamiing",
             ],
