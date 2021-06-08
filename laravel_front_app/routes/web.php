@@ -62,6 +62,9 @@ Route::post('/users', [UserController::class, 'store'])
 Route::get('/catalogo', [TituloQueryController::class, 'index'])
     ->name('catalogo')
     ->middleware(['auth', 'can:consultarTitulo']);
+
+Route::get('/catalogo/{id}', [TituloQueryController::class, 'showTitulo'])
+    ->middleware(['auth', 'can:consultarTitulo', 'can:consultarJuego']);
  
  /**
  * -------------------------
