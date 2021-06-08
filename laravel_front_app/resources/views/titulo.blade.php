@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('pageTitle', 'GameFlake - {{ $titulo["nombre"] }}')
+@section('pageTitle', 'GameFlake - Detalle título')
 
 @section('header')
 
