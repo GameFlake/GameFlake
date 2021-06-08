@@ -81,10 +81,10 @@
     </table>
     @else
     <div class="col s12 m7">
-    <div class="card horizontal  blue lighten-2">
+    <div class="card horizontal deep-purple lighten-4 mb-5">
       <div class="card-stacked">
         <div class="card-content center-align">
-          <h3>No hay ofertas disponibles por el momento</h3>
+          <h5>No hay ofertas disponibles por el momento</h5>
         </div>
       </div>
     </div>
@@ -139,10 +139,10 @@
     </table>
     @else  
     <div class="col s12 m7">
-      <div class="card horizontal  blue lighten-2">
+      <div class="card horizontal deep-purple lighten-4 mb-5">
         <div class="card-stacked">
           <div class="card-content center-align">
-            <h3>No hay ofertas disponibles por el momento</h3>
+            <h5>No hay ofertas disponibles por el momento</h5>
           </div>
         </div>
       </div>

@@ -46,7 +46,8 @@ Route::get('/logout', [AuthController::class, 'logout'])
 
 // Mostrar vista para registrar nuevo usuario
 Route::get('/users/create', [UserController::class, 'create'])
-    ->name('create_user');
+    ->name('create_user')
+    ->middleware('guest');
 
 // Registrar nuevo usuario
 Route::post('/users', [UserController::class, 'store'])
