@@ -13,7 +13,7 @@ class JuegoQuery extends Model
     public static function getJuegosByTitulo($id) {
         $token = session('token');
         $response = Http::withToken($token)
-                        ->get(env('API_URL').'juegos/'.$id);
+                        ->get(env('API_URL').'titulos/'.$id.'/juegos');
         return ($response->json());
     }
 }
