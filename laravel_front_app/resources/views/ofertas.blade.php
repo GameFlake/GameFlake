@@ -13,29 +13,8 @@
 
 @section('mainContent')
 
-  @if(Session::has('update'))
-  <script>
-    Swal.fire(
-            '¡Aceptado!',
-            'La oferta fue aceptada.',
-            'success'
-          );
-  </script>
-  @endif
-
-
-  @if(Session::has('eliminate'))
-    <script>
-     Swal.fire(
-              '¡Elimiado!',
-              'La oferta fue eliminada.',
-              'success'
-            );
-    </script>
-  @endif
-
   <div class="container">
-    @if (count($ofertaquery)!=0)  
+    @if (count($ofertaquery) != 0)  
     <table  class="responsive-table mb-5" >
         
         <thead class="grey darken-4 ">
@@ -102,30 +81,20 @@
     </table>
     @else
     <div class="col s12 m7">
-    <div class="card horizontal  blue lighten-2">
+    <div class="card horizontal deep-purple lighten-4 mb-5">
       <div class="card-stacked">
         <div class="card-content center-align">
-          <h3>No hay ofertas disponibles por el momento</h3>
+          <h5>No hay ofertas disponibles por el momento</h5>
         </div>
       </div>
     </div>
     </div> 
     @endif
-
-    @if(Session::has('message'))
-    <script>
-     Swal.fire(
-              '¡Elimiado!',
-              'La oferta fue eliminada.',
-              'success'
-            );
-    </script>
-    @endif
-   
+  
  
     <h1 class='text-center titulo'> Ofertas realizadas</h1>
 
-    @if (count($misofertas)!=0)  
+    @if (count($misofertas) != 0)  
     <table  class="responsive-table mb-5" >
       <thead class="grey darken-4 ">
         <tr class="white-text  ">
@@ -144,11 +113,13 @@
             <td class="center-align">{{ $ofertas["TO"] }}</td>
             <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
             <td class="center-align">
-            <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
-              @csrf
-              {{ method_field('DELETE')}}
-            <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿ Estas seguro que quieres borrar?') ;"> <i class="material-icons white-text">close</i> </button>
-            </form>
+              <form action="{{ url('/ofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
+                @csrf
+                {{ method_field('DELETE') }}
+                <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"> 
+                  <i class="material-icons white-text">close</i> 
+                </button>
+              </form>
             </td>               
             <td class="center-align">
               <span data-badge-caption="" data-position="top"
@@ -168,10 +139,10 @@
     </table>
     @else  
     <div class="col s12 m7">
-      <div class="card horizontal  blue lighten-2">
+      <div class="card horizontal deep-purple lighten-4 mb-5">
         <div class="card-stacked">
           <div class="card-content center-align">
-            <h3>No hay ofertas disponibles por el momento</h3>
+            <h5>No hay ofertas disponibles por el momento</h5>
           </div>
         </div>
       </div>
@@ -182,3 +153,25 @@
   </div>
 
 @endsection
+
+@push('scripts')
+  @if(Session::has('update'))
+  <script>
+    Swal.fire(
+            '¡Aceptado!',
+            'La oferta fue aceptada.',
+            'success'
+          );
+  </script>
+  @endif
+
+  @if(Session::has('eliminate'))
+    <script>
+     Swal.fire(
+              '¡Eliminado!',
+              'La oferta fue eliminada.',
+              'success'
+            );
+    </script>
+  @endif
+@endpush

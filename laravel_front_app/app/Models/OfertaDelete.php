@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class OfertaDelete extends Model
 {
     use HasFactory;
+
+    
 }

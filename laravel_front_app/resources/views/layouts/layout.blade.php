@@ -22,9 +22,7 @@
 <body class="indigo lighten-5">
   <nav>
     <div class="nav-wrapper deep-purple darken-3">
-      <a href="#" class="brand-logo flow-text ml-2">
-        GameFlake
-      </a>
+      <a href="{{ route('catalogo') }}" class="brand-logo ml-4">GameFlake</a>
       <a href="#" data-target="sidebar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
             <li><a href="{{ route('catalogo') }}">Catálogo</a></li>

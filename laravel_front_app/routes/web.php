@@ -18,6 +18,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TituloQueryController;
 use App\Http\Controllers\OfertaQueryController;
+use App\Http\Controllers\OfertaDeleteController;
 
 
 /**
@@ -45,7 +46,8 @@ Route::get('/logout', [AuthController::class, 'logout'])
 
 // Mostrar vista para registrar nuevo usuario
 Route::get('/users/create', [UserController::class, 'create'])
-    ->name('create_user');
+    ->name('create_user')
+    ->middleware('guest');
 
 // Registrar nuevo usuario
 Route::post('/users', [UserController::class, 'store'])
@@ -71,13 +73,11 @@ Route::get('/ofertas', [OfertaQueryController::class, 'index'])
     ->name('ofertas')
     ->middleware(['auth', 'can:consultarOferta']);
 
-Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
-Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
+Route::post('/ofertas/update', [OfertaQueryController::class, 'update'])
+    ->middleware(['auth', 'can:editarOferta']);
 
-use App\Http\Controllers\OfertaDeleteController;
-//Route::get('/misofertas/{id}', [OfertaDeleteController::class, 'destroy']);
-Route::resource('misofertas', OfertaDeleteController::class);
-//Route::get('/misofertas/edit/{id}', [OfertaDeleteController::class,'edit']);
+Route::delete('/ofertas/{id}', [OfertaQueryController::class, 'destroy'])
+    ->middleware(['auth', 'can:eliminarOferta']);
 
 
  /**

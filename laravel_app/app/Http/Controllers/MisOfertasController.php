@@ -16,10 +16,9 @@ class MisOfertasController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Manda llamar a la funcion para consultar todas las ofertas realizadas
-    public function index()
-    {
-         //Laravel transforma el contedo a json por defecto en esta parte
-        return MisOfertas::getAllMisOfertas();
+    public function index(Request $request) {
+        $idUsuario = $request->user()->idUsuario;
+        return MisOfertas::getAllMisOfertas($idUsuario);
     }
 
     /**

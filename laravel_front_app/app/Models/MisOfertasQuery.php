@@ -13,8 +13,9 @@ class MisOfertasQuery extends Model
     //Mandar a llamar a la api, la información que necesito por medio del URL
     // @return un json con esta información
     public static function getMisOfertas() {
-
-        $response = Http::get(env('API_URL').'misofertas');
+        $token = session('token');
+        $response = Http::withToken($token)
+                        ->get(env('API_URL').'misofertas');
         return ($response->json());
     }
 
