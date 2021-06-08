@@ -13,29 +13,8 @@
 
 @section('mainContent')
 
-  @if(Session::has('update'))
-  <script>
-    Swal.fire(
-            '¡Aceptado!',
-            'La oferta fue aceptada.',
-            'success'
-          );
-  </script>
-  @endif
-
-
-  @if(Session::has('eliminate'))
-    <script>
-     Swal.fire(
-              '¡Elimiado!',
-              'La oferta fue eliminada.',
-              'success'
-            );
-    </script>
-  @endif
-
   <div class="container">
-    @if (count($ofertaquery)!=0)  
+    @if (count($ofertaquery) != 0)  
     <table  class="responsive-table mb-5" >
         
         <thead class="grey darken-4 ">
@@ -111,21 +90,11 @@
     </div>
     </div> 
     @endif
-
-    @if(Session::has('message'))
-    <script>
-     Swal.fire(
-              '¡Elimiado!',
-              'La oferta fue eliminada.',
-              'success'
-            );
-    </script>
-    @endif
-   
+  
  
     <h1 class='text-center titulo'> Ofertas realizadas</h1>
 
-    @if (count($misofertas)!=0)  
+    @if (count($misofertas) != 0)  
     <table  class="responsive-table mb-5" >
       <thead class="grey darken-4 ">
         <tr class="white-text  ">
@@ -144,7 +113,7 @@
             <td class="center-align">{{ $ofertas["TO"] }}</td>
             <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
             <td class="center-align">
-              <form action="{{ url('/misofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
+              <form action="{{ url('/ofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
                 @csrf
                 {{ method_field('DELETE') }}
                 <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"> 
@@ -184,3 +153,25 @@
   </div>
 
 @endsection
+
+@push('scripts')
+  @if(Session::has('update'))
+  <script>
+    Swal.fire(
+            '¡Aceptado!',
+            'La oferta fue aceptada.',
+            'success'
+          );
+  </script>
+  @endif
+
+  @if(Session::has('eliminate'))
+    <script>
+     Swal.fire(
+              '¡Eliminado!',
+              'La oferta fue eliminada.',
+              'success'
+            );
+    </script>
+  @endif
+@endpush

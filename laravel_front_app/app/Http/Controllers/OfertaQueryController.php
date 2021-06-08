@@ -17,34 +17,28 @@ class OfertaQueryController extends Controller
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
 
-    public function destroy($id) {
-        $ofertaquery = OfertaQuery::destroy($id);
-        
-        if($ofertaquery != NULL){
-            return redirect('ofertas')->with('eliminate', 'Oferta borrada con éxito');
-        }   
-
-        return redirect('ofertas');
-    }
-
     /**
-     * Update the specified resource in storage.
+     * Actualizar el estatus de la oferta por medio del request
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-
-     //Actualizar el estatus de la oferta por medio del request
-    public function update(Request $request)
-    { 
+    public function update(Request $request) { 
         $ofertaquery= OfertaQuery::updateOferta($request);
 
         var_dump($ofertaquery);
         
         if($ofertaquery != NULL){
             return  redirect('ofertas')->with('update','Oferta editada con éxito');
-        }
+        } 
+    }
+
+    public function destroy($id) {
+        $ofertaquery = OfertaQuery::destroy($id);
         
+        if($ofertaquery != NULL){
+            return redirect('ofertas')->with('eliminate', 'Oferta borrada con éxito');
+        }   
     }
 }

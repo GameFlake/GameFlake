@@ -72,10 +72,10 @@ Route::get('/ofertas', [OfertaQueryController::class, 'index'])
     ->name('ofertas')
     ->middleware(['auth', 'can:consultarOferta']);
 
-Route::delete('/ofertas/{id}', 'App\Http\Controllers\OfertaQueryController@destroy');
-Route::post('/ofertas/update', 'App\Http\Controllers\OfertaQueryController@update');
+Route::post('/ofertas/update', [OfertaQueryController::class, 'update'])
+    ->middleware(['auth', 'can:editarOferta']);
 
-Route::put('/misofertas/{id}', [OfertaQueryController::class, 'update'])
+Route::delete('/ofertas/{id}', [OfertaQueryController::class, 'destroy'])
     ->middleware(['auth', 'can:eliminarOferta']);
 
 

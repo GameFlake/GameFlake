@@ -30,15 +30,14 @@ use App\Http\Controllers\UserController;
 Route::get('/ofertas', [OfertaController::class, "index"])
     ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
-Route::put('/ofertas/{id}', [OfertaController::class, "update"])
+Route::put('/ofertas/update', [OfertaController::class, "update"])
     ->middleware(['auth:sanctum', 'can:editarOferta']);
 
 Route::delete('/ofertas/{id}', [OfertaController::class, "destroy"])
     ->middleware(['auth:sanctum', 'can:eliminarOferta']);
 
-
-/*Route::get("/misofertas", [MisOfertasController::class, "index"])
-    ->middleware('auth:sanctum');*/
+Route::get("/misofertas", [MisOfertasController::class, "index"])
+    ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
 //Route::apiResource("ofertas", OfertaController::class);
 
