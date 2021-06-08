@@ -11,7 +11,6 @@
 <br>
 <br>
 
-
 @endsection
 
 @section('mainContent')
@@ -49,6 +48,9 @@
 <br>
 
 <div class = "container">
+
+@if($juegoquery != NULL)
+
 <table  class="responsive-table mb-5" >
         
         <thead class="grey darken-4 ">
@@ -79,10 +81,33 @@
               <td class="center-align">{{ $juego["nombreCondicion"] }}</td>
               
               <td class="center-align">
-                <span data-badge-caption="Disponible" data-position="top"
-                  class="new badge tooltipped blue"
-                >
-                </span>
+                <!-- Modal Trigger -->
+                <button data-target="modal{{ $juego["idJuego"] }}" class="btn modal-trigger blue">Disponible</button>
+
+                <!-- Modal Structure -->
+                <div id="modal{{ $juego["idJuego"] }}" class="modal">
+                  <div class="modal-content">
+                    <h4 class="black-text">{{ $juego["nombreTitulo"] }} de {{ $juego["nombreUsuario"] }}</h4>
+                    
+                    <p class="black-text left-align">Plataforma: {{ $juego["nombreConsola"] }}</p>
+                    <p class="black-text left-align">{{ $juego["nombreCondicion"] }}: {{ $juego["descripcionCondicion"] }}</p>
+                    <p class="black-text left-align">Comentarios del dueño: {{ $juego["comentarios"] }}</p>
+
+                    <p class="black-text left-align">Cambio por:</p>
+                    <select class="browser-default">
+                      <option value="" disabled selected>Mis juegos...</option>
+                      <option value="">The Legend of Zelda: Breath of the Wild</option>
+                      <option value="">Crash Bandicoot: Insane Trilogy</option>
+                      <option value="">Mario Kart 8</option>
+                    </select>
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ofertar</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cerrar</a>
+                  </div>
+                </div>
               </td>
               
             </tr>
@@ -90,8 +115,17 @@
         
         </tbody>           
     </table>
+
+    @else
+    
+
 </div>
 <br>
+<script>
+$(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
 
       
 @endsection
