@@ -11,9 +11,16 @@ class TituloQuery extends Model
     use HasFactory;
 
     public static function getTitulos() {
-
-        $response = Http::get(env('API_URL').'titulos');
+        $token = session('token');
+        $response = Http::withToken($token)
+                        ->get(env('API_URL').'titulos');
         return ($response->json());
+    }
 
+    public static function getTitulo($id) {
+        $token = session('token');
+        $response = Http::withToken($token)
+                        ->get(env('API_URL').'titulos/'.$id);
+        return ($response->json());
     }
 }

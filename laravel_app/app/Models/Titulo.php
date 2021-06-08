@@ -13,9 +13,12 @@ class Titulo extends Model
 
 
     public static function getAllTitulos(){
-
         $titulos = self::all();
-
         return $titulos;
+    }
+
+    public static function getTitulo($id){
+        $titulo = self::where('idTitulo', $id)->get();
+        return $titulo;
     }
 }

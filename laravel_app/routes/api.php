@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\MisOfertasController;
 use App\Http\Controllers\TituloController;
+use App\Http\Controllers\JuegoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 
@@ -39,18 +40,20 @@ Route::delete('/ofertas/{id}', [OfertaController::class, "destroy"])
 Route::get("/misofertas", [MisOfertasController::class, "index"])
     ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
-//Route::apiResource("ofertas", OfertaController::class);
 
-//Recibir el Id e ir al controlador para eliminar la oferta
-//Route::post('/ofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersOfertaController@destroy']);
+/**
+ * -------------------------
+ *     TITULOS & JUEGOS
+ * -------------------------
+ */
+Route::get('/titulos', [TituloController::class, "index"])
+    ->middleware(['auth:sanctum', 'can:consultarTitulo']);
 
-//Recibir el id e ir al controlador para actualizar la oferta 
-//Route::put('/ofertas/update', ['as' => 'put', 'uses' => 'App\Http\ControllersOfertaController@update']);
+Route::get('/titulos/{id}', [TituloController::class, "show"])
+    ->middleware(['auth:sanctum', 'can:consultarTitulo']);
 
-//Recibir el Id e ir al controlador para eliminar la oferta
-//Route::post('/misofertas/{id}', ['as' => 'delete', 'uses' => 'App\Http\ControllersMisOfertasController@destroy']);
-
-Route::apiResource("titulos", TituloController::class);
+Route::get('/titulos/{id}/juegos', [JuegoController::class, "show"])
+    ->middleware(['auth:sanctum', 'can:consultarJuego']);
 
 /**
  * -------------------------
