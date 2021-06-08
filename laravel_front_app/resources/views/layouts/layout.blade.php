@@ -45,7 +45,7 @@
   <main class="containers-fluid">
       @yield('mainContent')
 
-      <footer class="page-footer deep-purple darken-3">
+      <footer class="page-footer deep-purple darken-1">
         <div class="container ">
           <div class="row">
             <div class="col l6 s12">
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="footer-copyright deep-purple darken-1">
+        <div class="footer-copyright deep-purple darken-2">
           <div class="container">
           © 2021 GameFlake 
           <a class="grey-text text-lighten-4 right" href="https://gameflake.github.io/api-docs/build/">Documentación de la API</a>
