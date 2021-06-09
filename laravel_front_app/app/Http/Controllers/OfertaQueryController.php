@@ -24,7 +24,7 @@ class OfertaQueryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $idOferta) { 
-        $ofertaquery= OfertaQuery::updateOferta($idOferta, $request->estado);
+        $ofertaquery = OfertaQuery::updateOferta($idOferta, $request->estado);
         if($ofertaquery != NULL){
             return  redirect('ofertas')->with('update', 'Oferta editada con éxito');
         } 
@@ -32,7 +32,6 @@ class OfertaQueryController extends Controller
 
     public function destroy($id) {
         $ofertaquery = OfertaQuery::destroy($id);
-        
         if($ofertaquery != NULL){
             return redirect('ofertas')->with('eliminate', 'Oferta borrada con éxito');
         }   
