@@ -16,22 +16,32 @@ class OfertaSeeder extends Seeder
     {
         DB::table('oferta')->insert([
             [
-                "idOferta" => 437,
-                "fechaInicio" => "2021-04-12",
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "1",
+                "idJuegoOfertante" => "3",
+                "estado" => "Pendiente",
+            ],
+            [
+                "fechaInicio" => "2021-04-04",
                 "fechaTerminacion" => NULL,
                 "idJuegoRecipiente" => "1",
                 "idJuegoOfertante" => "2",
-                "estado" => "Terminada",
-
+                "estado" => "Pendiente",
             ],
             [
-                "idOferta" => 754,
-                "fechaInicio" => "2021-04-14",
-                "fechaTerminacion" => "2021-04-20",
-                "idJuegoRecipiente" => "3",
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "1",
+                "idJuegoOfertante" => "5",
+                "estado" => "Pendiente",
+            ],
+            [
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "5",
                 "idJuegoOfertante" => "4",
-                "estado" => "Aprobada",
-
+                "estado" => "Pendiente",
             ],
         ]);
     }
