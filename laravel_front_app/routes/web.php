@@ -76,7 +76,7 @@ Route::get('/ofertas', [OfertaQueryController::class, 'index'])
     ->name('ofertas')
     ->middleware(['auth', 'can:consultarOferta']);
 
-Route::post('/ofertas/update', [OfertaQueryController::class, 'update'])
+Route::put('/ofertas/{id}/update', [OfertaQueryController::class, 'update'])
     ->middleware(['auth', 'can:editarOferta']);
 
 Route::delete('/ofertas/{id}', [OfertaQueryController::class, 'destroy'])

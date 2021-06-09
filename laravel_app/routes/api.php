@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 // Importar controladores
 use App\Http\Controllers\OfertaController;
-use App\Http\Controllers\MisOfertasController;
 use App\Http\Controllers\TituloController;
 use App\Http\Controllers\JuegoController;
 use App\Http\Controllers\AuthController;
@@ -28,16 +27,16 @@ use App\Http\Controllers\UserController;
  *         OFERTAS
  * -------------------------
  */
-Route::get('/ofertas', [OfertaController::class, "index"])
+Route::get('/ofertas/recibidas', [OfertaController::class, "getRecibidas"])
     ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
-Route::put('/ofertas/update', [OfertaController::class, "update"])
+Route::put('/ofertas/{id}/update', [OfertaController::class, "update"])
     ->middleware(['auth:sanctum', 'can:editarOferta']);
 
 Route::delete('/ofertas/{id}', [OfertaController::class, "destroy"])
     ->middleware(['auth:sanctum', 'can:eliminarOferta']);
 
-Route::get("/misofertas", [MisOfertasController::class, "index"])
+Route::get("/ofertas/realizadas", [OfertaController::class, "getRealizadas"])
     ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
 

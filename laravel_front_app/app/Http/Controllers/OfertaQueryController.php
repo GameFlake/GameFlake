@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\OfertaQuery;
-use App\Models\MisOfertasQuery;
 use Illuminate\Http\Request;
 
 class OfertaQueryController extends Controller
@@ -12,8 +11,8 @@ class OfertaQueryController extends Controller
     //Llamo la funcion de ofertas recibidas y realizadas
     //@return la vista con las dos consultas necesarias
     public function index(Request $request) {
-        $ofertaquery = OfertaQuery::getOferta();
-        $misofertasquery = MisOfertasQuery::getMisOfertas();
+        $ofertaquery = OfertaQuery::getRecibidas();
+        $misofertasquery = OfertaQuery::getRealizadas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
 
@@ -24,13 +23,10 @@ class OfertaQueryController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request) { 
-        $ofertaquery= OfertaQuery::updateOferta($request);
-
-        var_dump($ofertaquery);
-        
+    public function update(Request $request, $idOferta) { 
+        $ofertaquery= OfertaQuery::updateOferta($idOferta, $request->estado);
         if($ofertaquery != NULL){
-            return  redirect('ofertas')->with('update','Oferta editada con éxito');
+            return  redirect('ofertas')->with('update', 'Oferta editada con éxito');
         } 
     }
 

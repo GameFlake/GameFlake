@@ -47,6 +47,14 @@ class JuegoSeeder extends Seeder
                 "idCondicion" => "3", //usado
                 "idConsola" => "12", //Xbox One
             ],
+            [
+                "idJuego" => 5,
+                "comentarios" => "Funciona a la perfección, solo se ha jugado en el 3 horas.",
+                "idUsuario" => "4", // Julian
+                "idTitulo" => "4", //Little nightmares
+                "idCondicion" => "3", //usado
+                "idConsola" => "12", //Xbox One
+            ],
         ]);
     }
 }
