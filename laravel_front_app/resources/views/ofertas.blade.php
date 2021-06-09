@@ -139,18 +139,17 @@
       </thead>
 
       <tbody class="deep-purple darken-4 white-text">
-      @foreach ($misofertas as $ofertas)
+      @foreach ($misofertas as $mioferta)
           <tr >
-            <td class="center-align">{{ $ofertas["TR"] }}</td>
-            <td class="center-align">{{ $ofertas["TO"] }}</td>
-            <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
+            <td class="center-align">{{ $mioferta["TR"] }}</td>
+            <td class="center-align">{{ $mioferta["TO"] }}</td>
+            <td class="center-align">{{ $mioferta["nombre"] }} {{ $mioferta["Apellido"] }}</td>
             <td class="center-align">
-              @if($oferta["estado"] === 'Pendiente')
+              @if($mioferta["estado"] === 'Pendiente')
                 <!-- Borrar -->
-                <form action="{{ url('/ofertas/'.$oferta['id'].'') }}" method="post" style="display: inline">
+                <form action="{{ url('/ofertas/'.$mioferta['id']) }}" method="post" style="display: inline">
                   @csrf
                   {{ method_field('DELETE') }}
-                  <input id="estado" name="estado" type="hidden" value ='Aprobada'>
                   <button type="submit" class="btn red darken-1 tooltipped" 
                           data-tooltip="Borrar" data-position="top"
                           onclick="return confirm('¿Estas seguro de que quieres borrar la oferta?') ;">
@@ -158,7 +157,7 @@
                   </button>
                 </form>
               
-              @elseif($oferta["estado"] == 'Aprobada')  
+              @elseif($mioferta["estado"] == 'Aprobada')  
                 <!-- Cancelar -->
                 <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                   @csrf
@@ -171,29 +170,22 @@
                   </button>
                 </form>
               @endif
-              <!--<form action="{{ url('/ofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
-                @csrf
-                {{ method_field('DELETE') }}
-                <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"> 
-                  <i class="material-icons white-text">close</i> 
-                </button>
-              </form>-->
             </td>               
             <td class="center-align">
               <span data-badge-caption="" data-position="top"
-              @if ($oferta["estado"] === 'Pendiente')
+              @if ($mioferta["estado"] === 'Pendiente')
                 data-tooltip="Esta oferta aún espera una respuesta"
                 class="new badge tooltipped yellow darken-2"
-              @elseif ($oferta["estado"] === 'Aprobada')
+              @elseif ($mioferta["estado"] === 'Aprobada')
                 data-tooltip="Esta oferta fue aceptada pero aún no se intercambian los juegos"
                 class="new badge tooltipped green accent-4"
-              @elseif ($oferta["estado"] === 'Terminada')
+              @elseif ($mioferta["estado"] === 'Terminada')
                 data-tooltip="Esta oferta fue aceptada y se intercambiaron los juegos"
                 class="new badge tooltipped light-blue darken-1"
-              @elseif ($oferta["estado"] === 'Rechazada')
+              @elseif ($mioferta["estado"] === 'Rechazada')
                 data-tooltip="Esta oferta fue rechazada"
                 class="new badge tooltipped red darken-1"
-              @elseif ($oferta["estado"] === 'Cancelada')
+              @elseif ($mioferta["estado"] === 'Cancelada')
                 data-tooltip="Esta oferta fue aceptada pero no se intercambiaron los juegos"
                 class="new badge tooltipped red darken-1"
               @endif
