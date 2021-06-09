@@ -31,7 +31,7 @@ use App\Http\Controllers\UserController;
 Route::get('/ofertas', [OfertaController::class, "index"])
     ->middleware(['auth:sanctum', 'can:consultarOferta']);
 
-Route::put('/ofertas/update', [OfertaController::class, "update"])
+Route::put('/ofertas/{id}/update', [OfertaController::class, "update"])
     ->middleware(['auth:sanctum', 'can:editarOferta']);
 
 Route::delete('/ofertas/{id}', [OfertaController::class, "destroy"])

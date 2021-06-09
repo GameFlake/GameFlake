@@ -23,10 +23,10 @@ class OfertaQueryController extends Controller
      * @param  \App\Models\OfertaDelete  $ofertaDelete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request) { 
-        $ofertaquery= OfertaQuery::updateOferta($request->idOferta, $request->estado);
+    public function update(Request $request, $idOferta) { 
+        $ofertaquery= OfertaQuery::updateOferta($idOferta, $request->estado);
         if($ofertaquery != NULL){
-            return  redirect('ofertas')->with('update','Oferta editada con éxito');
+            return  redirect('ofertas')->with('update', 'Oferta editada con éxito');
         } 
     }
 

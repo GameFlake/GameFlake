@@ -40,6 +40,7 @@
                   <!-- Aceptar -->
                   <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                     @csrf
+                    {{ method_field('PUT') }}
                     <input id="estado" name="estado" type="hidden" value ='Aprobado'>
                     <button type="submit" class="btn green accent-4 tooltipped" 
                             data-tooltip="Aceptar" data-position="top"
@@ -51,6 +52,7 @@
                   <!-- Rechazar -->
                   <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                     @csrf
+                    {{ method_field('PUT') }}
                     <input id="estado" name="estado" type="hidden" value ='Rechazado'>
                     <button type="submit" class="btn red darken-1 tooltipped" 
                             data-tooltip="Rechazar" data-position="top"
@@ -58,7 +60,7 @@
                             <i class="material-icons medium white-text">close</i>
                     </button>
                   </form>
-                @elseif($ofertas["estado"] == 'intercambiando')
+                @elseif($oferta["estado"] == 'intercambiando')
 
                 @endif
               </td>

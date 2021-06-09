@@ -46,11 +46,11 @@ class OfertaQuery extends Model
     public static function updateOferta($idOferta, $estado) {
         $token = session('token');
         $response = Http::withToken($token)
-                        ->post(env('API_URL').'ofertas/'.$idOferta.'/update',[
+                        ->put(env('API_URL').'ofertas/'.$idOferta.'/update', [
             'estado' => $estado,
         ]);
         if($response->status() == 200) {
-            return (true);
+            return true;
         }
         return null;
     }
