@@ -35,7 +35,7 @@ class OfertaController extends Controller
         $result = $oferta->save();
 
         // Borrar juegos de la oferta si se termino
-        if($oferta->estado == "Terminada") {
+        if($oferta->estado == "Terminada_") {
             $juegoRecipiente = Juego::find($oferta->idJuegoRecipiente);
             $juegoOfertante = Juego::find($oferta->idjuegoOfertante);
             $juegoRecipiente->delete();

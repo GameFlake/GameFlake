@@ -4,7 +4,7 @@
 
 @section('header')
 <div class="container">
-  <h1 class='text-center titulo'>Catálogo</h1>
+  <h2 class='text-center titulo'>Catálogo</h2>
 </div>
 @endsection
 

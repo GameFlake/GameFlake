@@ -5,9 +5,9 @@
 
 @section('header')
   <div class="container">
-    <h1 class='text-center titulo'>
+    <h2 class='text-center titulo'>
       Ofertas recibidas
-    </h1>
+    </h2>
   </div>
 @endsection
 
@@ -41,11 +41,11 @@
                   <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                     @csrf
                     {{ method_field('PUT') }}
-                    <input id="estado" name="estado" type="hidden" value ='Aprobado'>
+                    <input id="estado" name="estado" type="hidden" value ='Aprobada'>
                     <button type="submit" class="btn green accent-4 tooltipped" 
                             data-tooltip="Aceptar" data-position="top"
-                            onclick="return confirm('¿Estas seguro que quieres aceptar la oferta?') ;">
-                            <i class="material-icons medium white-text">check</i>
+                            onclick="return confirm('¿Estas seguro de que quieres aceptar la oferta?') ;">
+                            <i class="material-icons medium white-text">done</i>
                     </button>
                   </form>
                 
@@ -53,15 +53,37 @@
                   <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
                     @csrf
                     {{ method_field('PUT') }}
-                    <input id="estado" name="estado" type="hidden" value ='Rechazado'>
+                    <input id="estado" name="estado" type="hidden" value ='Rechazada'>
                     <button type="submit" class="btn red darken-1 tooltipped" 
                             data-tooltip="Rechazar" data-position="top"
-                            onclick="return confirm('¿Estas seguro que quieres borrar la oferta?') ;">
+                            onclick="return confirm('¿Estas seguro de que quieres rechazar la oferta?') ;">
                             <i class="material-icons medium white-text">close</i>
                     </button>
                   </form>
-                @elseif($oferta["estado"] == 'intercambiando')
-
+                @elseif($oferta["estado"] == 'Aprobada')
+                  <!-- Terminar -->
+                  <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <input id="estado" name="estado" type="hidden" value ='Terminada'>
+                    <button type="submit" class="btn light-blue darken-1 tooltipped" 
+                            data-tooltip="Terminar" data-position="top"
+                            onclick="return confirm('¿Estas seguro de que quieres terminar la oferta?') ;">
+                            <i class="material-icons medium white-text">done_all</i>
+                    </button>
+                  </form>
+                
+                  <!-- Cancelar -->
+                  <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <input id="estado" name="estado" type="hidden" value ='Cancelada'>
+                    <button type="submit" class="btn red darken-1 tooltipped" 
+                            data-tooltip="Cancelar" data-position="top"
+                            onclick="return confirm('¿Estas seguro de que quieres cancelar la oferta?') ;">
+                            <i class="material-icons medium white-text">close</i>
+                    </button>
+                  </form>
                 @endif
               </td>
               <td class="center-align">
@@ -69,9 +91,18 @@
                 @if ($oferta["estado"] === 'Pendiente')
                   data-tooltip="Esta oferta aún espera una respuesta"
                   class="new badge tooltipped yellow darken-2"
-                @else
-                  data-tooltip="Esta oferta fue aceptada"
+                @elseif ($oferta["estado"] === 'Aprobada')
+                  data-tooltip="Esta oferta fue aceptada pero aún no se intercambian los juegos"
                   class="new badge tooltipped green accent-4"
+                @elseif ($oferta["estado"] === 'Terminada')
+                  data-tooltip="Esta oferta fue aceptada y se intercambiaron los juegos"
+                  class="new badge tooltipped light-blue darken-1"
+                @elseif ($oferta["estado"] === 'Rechazada')
+                  data-tooltip="Esta oferta fue rechazada"
+                  class="new badge tooltipped red darken-1"
+                @elseif ($oferta["estado"] === 'Cancelada')
+                  data-tooltip="Esta oferta fue aceptada pero no se intercambiaron los juegos"
+                  class="new badge tooltipped red darken-1"
                 @endif
                 >{{ $oferta["estado"] }}
                 </span>
@@ -93,10 +124,10 @@
     @endif
   
  
-    <h1 class='text-center titulo'> Ofertas realizadas</h1>
+    <h2 class='text-center titulo'> Ofertas realizadas</h2>
 
     @if (count($misofertas) != 0)  
-    <table  class="responsive-table mb-5" >
+    <table class="responsive-table striped mb-5" >
       <thead class="grey darken-4 ">
         <tr class="white-text  ">
             <th class="center-align">Quieres cambiar tu</th>
@@ -124,14 +155,23 @@
             </td>               
             <td class="center-align">
               <span data-badge-caption="" data-position="top"
-                @if ($ofertas["estado"] === 'Pendiente')
-                  data-tooltip="Esta oferta aún espera una respuesta"
-                  class="new badge tooltipped yellow darken-2"
-                @else
-                  data-tooltip="Esta oferta fue aceptada"
-                  class="new badge tooltipped green accent-4"
-                @endif
-                >{{ $ofertas["estado"] }}
+              @if ($oferta["estado"] === 'Pendiente')
+                data-tooltip="Esta oferta aún espera una respuesta"
+                class="new badge tooltipped yellow darken-2"
+              @elseif ($oferta["estado"] === 'Aprobada')
+                data-tooltip="Esta oferta fue aceptada pero aún no se intercambian los juegos"
+                class="new badge tooltipped green accent-4"
+              @elseif ($oferta["estado"] === 'Terminada')
+                data-tooltip="Esta oferta fue aceptada y se intercambiaron los juegos"
+                class="new badge tooltipped light-blue darken-1"
+              @elseif ($oferta["estado"] === 'Rechazada')
+                data-tooltip="Esta oferta fue rechazada"
+                class="new badge tooltipped red darken-1"
+              @elseif ($oferta["estado"] === 'Cancelada')
+                data-tooltip="Esta oferta fue aceptada pero no se intercambiaron los juegos"
+                class="new badge tooltipped red darken-1"
+              @endif
+              >{{ $oferta["estado"] }}
               </span>
             </td>
           </tr>
@@ -159,8 +199,8 @@
   @if(Session::has('update'))
   <script>
     Swal.fire(
-            '¡Aceptado!',
-            'La oferta fue aceptada.',
+            '¡Actualizado!',
+            'La oferta fue actualizada.',
             'success'
           );
   </script>
