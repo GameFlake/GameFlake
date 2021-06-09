@@ -81,6 +81,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/users/store', [UserController::class, 'store'])
     ->name('store_user');
 
-// Muestra un error a las peticiones sin token
-Route::get('/unauthorized', [AuthController::class, "showAuthError"])->name('unauthorized');
+/**
+ * -------------------------
+ *          OTROS
+ * -------------------------
+ */
+// Redirigir a la pagina de documentacion
+Route::get('/', function () {
+    return redirect('https://gameflake.github.io/api-docs/build/');
+});
 
