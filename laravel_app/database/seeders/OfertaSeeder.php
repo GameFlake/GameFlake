@@ -43,6 +43,27 @@ class OfertaSeeder extends Seeder
                 "idJuegoOfertante" => "4",
                 "estado" => "Pendiente",
             ],
+            [
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "6",
+                "idJuegoOfertante" => "7",
+                "estado" => "Pendiente",
+            ],
+            [
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "8",
+                "idJuegoOfertante" => "4",
+                "estado" => "Pendiente",
+            ],
+            [
+                "fechaInicio" => "2021-04-04",
+                "fechaTerminacion" => NULL,
+                "idJuegoRecipiente" => "7",
+                "idJuegoOfertante" => "3",
+                "estado" => "Pendiente",
+            ],
         ]);
     }
 }

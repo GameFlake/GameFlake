@@ -55,6 +55,30 @@ class JuegoSeeder extends Seeder
                 "idCondicion" => "3", //usado
                 "idConsola" => "12", //Xbox One
             ],
+            [
+                "idJuego" => 6,
+                "comentarios" => "Sólo lo jugué una vez, está casi casi como nuevo, pero la caja está maltratada un poquito.",
+                "idUsuario" => "2", // Memo
+                "idTitulo" => "3", //BOTW
+                "idCondicion" => "2", //seminuevo
+                "idConsola" => "1", //Switch
+            ],
+            [
+                "idJuego" => 7,
+                "comentarios" => "Está en buenas condiciones el cartucho, pero la caja ya está en sus últimas",
+                "idUsuario" => "4", // Julian
+                "idTitulo" => "5", //Overcooked 2
+                "idCondicion" => "3", //usado
+                "idConsola" => "1", //Switch
+            ],
+            [
+                "idJuego" => 8,
+                "comentarios" => "Nunca lo abrí, fue un regalo y sigue en su plástico.",
+                "idUsuario" => "3", // Vale
+                "idTitulo" => "4", //Little nightmares
+                "idCondicion" => "1", //nuevo
+                "idConsola" => "1", //Switch
+            ],
         ]);
     }
 }
