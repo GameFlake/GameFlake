@@ -54,9 +54,10 @@ class OfertaController extends Controller
             $oferta->fechaTerminacion = date("Y-m-d");
         }
 
-        $result = $oferta->save();
+        $oferta->save();
         
-        return $result;
+        $responseJson = ['mensaje' => 'El estado de la oferta se cambió exitosamente.'];
+        return response()->json($responseJson, 200);
     }
 
     /**
@@ -68,7 +69,8 @@ class OfertaController extends Controller
      */
     public function destroy($idOferta) {
         $ofertas = Oferta::find($idOferta);
-        $success = $ofertas->delete();
-        return $success;
+        $ofertas->delete();
+        $responseJson = ['mensaje' => 'La oferta se eliminó exitosamente.'];
+        return response()->json($responseJson, 200);
     }
 }
