@@ -11,6 +11,7 @@ class Juego extends Model
     use HasFactory;
 
     public $table = "juego";
+    protected $primaryKey = 'idJuego';
 
     public static function getJuegosByTitulo($id) {
         $juegos = DB::table('juego')

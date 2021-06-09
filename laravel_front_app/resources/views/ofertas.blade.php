@@ -159,7 +159,7 @@
               
               @elseif($mioferta["estado"] == 'Aprobada')  
                 <!-- Cancelar -->
-                <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
+                <form action="{{ url('/ofertas/'.$mioferta['id'].'/update') }}" method="post" style="display: inline">
                   @csrf
                   {{ method_field('PUT') }}
                   <input id="estado" name="estado" type="hidden" value ='Cancelada'>
@@ -189,7 +189,7 @@
                 data-tooltip="Esta oferta fue aceptada pero no se intercambiaron los juegos"
                 class="new badge tooltipped red darken-1"
               @endif
-              >{{ $oferta["estado"] }}
+              >{{ $mioferta["estado"] }}
               </span>
             </td>
           </tr>

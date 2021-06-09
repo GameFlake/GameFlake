@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Oferta;
+use App\Models\Juego;
 
 class OfertaController extends Controller
 {
@@ -41,16 +42,19 @@ class OfertaController extends Controller
         // Actualizar estado de la oferta
         $oferta = Oferta::find($idOferta);
         $oferta->estado = $request->estado;
-        $oferta->fechaTerminacion = date("Y-m-d");
-        $result = $oferta->save();
 
         // Borrar juegos de la oferta si se termino
-        if($oferta->estado == "Terminada_") {
+        if($oferta->estado == "Terminada") {
+            
             $juegoRecipiente = Juego::find($oferta->idJuegoRecipiente);
-            $juegoOfertante = Juego::find($oferta->idjuegoOfertante);
+            $juegoOfertante = Juego::find($oferta->idJuegoOfertante);
             $juegoRecipiente->delete();
             $juegoOfertante->delete();
+            
+            $oferta->fechaTerminacion = date("Y-m-d");
         }
+
+        $result = $oferta->save();
         
         return $result;
     }
