@@ -17,14 +17,28 @@ class Oferta extends Model
     protected $primaryKey='idOferta';
     public $timestamps = false;
 
-    //Get de todas las ofertas que me han hecho por mis juegos 
-    public static function getAllOfertas($idUsuario){
+    // Get de todas las ofertas que me han hecho por mis juegos 
+    public static function getRecibidas($idUsuario){
         $oferta = DB::table('juego')
         ->select('oferta.idOferta as id', 'juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
         ->where('juego.idUsuario','=', $idUsuario)
         ->join('oferta', 'oferta.idJuegoRecipiente', '=', 'juego.idJuego')
         ->join('titulo as TR', 'juego.idTitulo', '=', 'TR.idTitulo')
         ->join('juego as JO', 'oferta.idJuegoOfertante', '=', 'JO.idJuego')
+        ->join('titulo as TO', 'TO.idTitulo', '=', 'JO.idTitulo')
+        ->join('usuario as U', 'JO.idUsuario', '=', 'U.idUsuario')
+        ->get();
+        return $oferta;
+    }
+
+    // Get de todas las ofertas que he hecho por los juegos que tengo 
+    public static function getRealizadas($idUsuario){
+        $oferta = DB::table('juego')
+        ->select('oferta.idOferta as id', 'juego.idJuego as RecipienteID' , 'oferta.idJuegoOfertante as Ofertante', 'TR.nombre as TR', 'TO.nombre as TO', 'U.nombre as nombre', 'oferta.estado as estado' , 'U.apellido as Apellido')
+        ->where('juego.idUsuario','=', $idUsuario)
+        ->join('oferta', 'oferta.idJuegoOfertante', '=', 'juego.idJuego')
+        ->join('titulo as TR', 'juego.idTitulo', '=', 'TR.idTitulo')
+        ->join('juego as JO', 'oferta.idJuegoRecipiente', '=', 'JO.idJuego')
         ->join('titulo as TO', 'TO.idTitulo', '=', 'JO.idTitulo')
         ->join('usuario as U', 'JO.idUsuario', '=', 'U.idUsuario')
         ->get();

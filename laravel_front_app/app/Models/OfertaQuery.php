@@ -13,19 +13,20 @@ class OfertaQuery extends Model
 
     // Mandar a llamar a la api, la información que necesito (ofertas recibidas) por medio del URL
     // @return un json con esta información
-    public static function getOferta() {
+    public static function getRecibidas() {
         $token = session('token');
         $response = Http::withToken($token)
-                        ->get(env('API_URL').'ofertas');
+                        ->get(env('API_URL').'ofertas/recibidas');
+        
         return ($response->json());
     }
 
     //Mandar a llamar a la api, la información que necesito por medio del URL
     // @return un json con esta información
-    public static function getMisOfertas() {
+    public static function getRealizadas() {
         $token = session('token');
         $response = Http::withToken($token)
-                        ->get(env('API_URL').'misofertas');
+                        ->get(env('API_URL').'ofertas/realizadas');
         return ($response->json());
     }
 

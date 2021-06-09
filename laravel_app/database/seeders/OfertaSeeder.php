@@ -21,7 +21,7 @@ class OfertaSeeder extends Seeder
                 "fechaTerminacion" => NULL,
                 "idJuegoRecipiente" => "1",
                 "idJuegoOfertante" => "2",
-                "estado" => "Pendiente",
+                "estado" => "Terminada",
 
             ],
             [
@@ -30,9 +30,9 @@ class OfertaSeeder extends Seeder
                 "fechaTerminacion" => "2021-04-20",
                 "idJuegoRecipiente" => "3",
                 "idJuegoOfertante" => "4",
-                "estado" => "Aprobado",
+                "estado" => "Aprobada",
 
-            ]
+            ],
         ]);
     }
 }

@@ -11,8 +11,8 @@ class OfertaQueryController extends Controller
     //Llamo la funcion de ofertas recibidas y realizadas
     //@return la vista con las dos consultas necesarias
     public function index(Request $request) {
-        $ofertaquery = OfertaQuery::getOferta();
-        $misofertasquery = OfertaQuery::getMisOfertas();
+        $ofertaquery = OfertaQuery::getRecibidas();
+        $misofertasquery = OfertaQuery::getRealizadas();
         return view("ofertas", ["ofertaquery" => $ofertaquery, 'misofertas' => $misofertasquery ]);
     }
 

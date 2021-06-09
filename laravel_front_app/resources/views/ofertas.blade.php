@@ -133,7 +133,7 @@
             <th class="center-align">Quieres cambiar tu</th>
             <th class="center-align">Por</th>
             <th class="center-align">De</th>
-            <th class="center-align">Eliminar</th>
+            <th class="center-align">Acciones</th>
             <th class="center-align">Estado</th>
         </tr>
       </thead>
@@ -145,13 +145,39 @@
             <td class="center-align">{{ $ofertas["TO"] }}</td>
             <td class="center-align">{{ $ofertas["nombre"] }} {{ $ofertas["Apellido"] }}</td>
             <td class="center-align">
-              <form action="{{ url('/ofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
+              @if($oferta["estado"] === 'Pendiente')
+                <!-- Borrar -->
+                <form action="{{ url('/ofertas/'.$oferta['id'].'') }}" method="post" style="display: inline">
+                  @csrf
+                  {{ method_field('DELETE') }}
+                  <input id="estado" name="estado" type="hidden" value ='Aprobada'>
+                  <button type="submit" class="btn red darken-1 tooltipped" 
+                          data-tooltip="Borrar" data-position="top"
+                          onclick="return confirm('¿Estas seguro de que quieres borrar la oferta?') ;">
+                          <i class="material-icons medium white-text">delete_forever</i>
+                  </button>
+                </form>
+              
+              @elseif($oferta["estado"] == 'Aprobada')  
+                <!-- Cancelar -->
+                <form action="{{ url('/ofertas/'.$oferta['id'].'/update') }}" method="post" style="display: inline">
+                  @csrf
+                  {{ method_field('PUT') }}
+                  <input id="estado" name="estado" type="hidden" value ='Cancelada'>
+                  <button type="submit" class="btn red darken-1 tooltipped" 
+                          data-tooltip="Cancelar" data-position="top"
+                          onclick="return confirm('¿Estas seguro de que quieres cancelar la oferta?') ;">
+                          <i class="material-icons medium white-text">close</i>
+                  </button>
+                </form>
+              @endif
+              <!--<form action="{{ url('/ofertas/'.$ofertas['id']) }}" method="post" class="formulario-eliminar" id='formulario-eliminar'>
                 @csrf
                 {{ method_field('DELETE') }}
                 <button type="submit" value="delete" class="btn red darken-1" id="btn-submit" onclick="return confirm('¿Estas seguro que quieres borrar?') ;"> 
                   <i class="material-icons white-text">close</i> 
                 </button>
-              </form>
+              </form>-->
             </td>               
             <td class="center-align">
               <span data-badge-caption="" data-position="top"

@@ -8,14 +8,23 @@ use App\Models\Oferta;
 class OfertaController extends Controller
 {
     /**
-     * Mandar llamar a la función que te hace la consulta en la base de datos 
+     * Manda llamar a la funcion para consultar todas las ofertas recibidas
      *
      * @return \Illuminate\Http\Response
      */
-    //Manda llamar a la funcion para consultar todas las ofertas recibidas
-    public function index(Request $request) {
+    public function getRecibidas(Request $request) {
         $idUsuario = $request->user()->idUsuario;
-        return Oferta::getAllOfertas($idUsuario);
+        return Oferta::getRecibidas($idUsuario);
+    }
+
+    /**
+     * Manda llamar a la funcion para consultar todas las ofertas realizadas
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getRealizadas(Request $request) {
+        $idUsuario = $request->user()->idUsuario;
+        return Oferta::getRealizadas($idUsuario);
     }
 
     /**
@@ -32,6 +41,7 @@ class OfertaController extends Controller
         // Actualizar estado de la oferta
         $oferta = Oferta::find($idOferta);
         $oferta->estado = $request->estado;
+        $oferta->fechaTerminacion = date("Y-m-d");
         $result = $oferta->save();
 
         // Borrar juegos de la oferta si se termino
